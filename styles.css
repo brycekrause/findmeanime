@@ -1,0 +1,85 @@
+body{
+    background-color: #171945;
+    text-align: center;
+    vertical-align: middle;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+div{
+    width: 300px;
+    height: 400px;
+    display: inline-block;
+    border-radius: 10px;
+    text-align: center;
+    margin: 0 auto;
+}
+#searchContainer{
+    width: 1920px;
+    height: 200px;
+}
+#findmeanime{
+    margin-top: 60px;
+    margin-bottom: 50px;
+    color: white;
+    font-size: 60px;
+    font-weight: bolder;
+}
+#container{
+    min-width: 1520px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;    
+}
+#result{
+    margin-top: 30px;
+    color: white;
+}
+img:not(#click){
+    border-radius: 10px;
+    size: 100%;
+    object-fit: cover;
+    width: 225px;
+    height: 309px;
+    transition: transform .5s;
+}
+img:hover{
+    transform: scale(1.1);
+
+}
+p{
+    color: white;
+}
+#search{
+    margin-top: 50px;
+    border: solid white 1px;
+    border-radius: 20px;
+    height: 40px;
+    width: 400px;
+    background-color: #171945;
+    color: white;
+    padding-left: 15px;
+    font-size: 20px;
+}
+#click{
+    background: url(search.png) no-repeat;
+    margin-top: 0px;
+    border: solid white 1px;
+    border-radius: 20px;
+    height: 40px;
+    background-color: #171945;
+    color: white;
+    font-size: 20px;    
+}
+#bottom{
+    background-color: #202357;
+    color: white;
+    border-radius: 0%;
+    width: 100%;
+    height: 100px;
+    outline: solid;
+    position: fixed;
+    bottom: 0px;
+    left: 0;
+}
+a{
+    color: #7277d8;
+}
