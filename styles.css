@@ -73,16 +73,6 @@ p{
     color: white;
     font-size: 20px;    
 }
-#bottom{
-    background-color: #202357;
-    color: white;
-    border-radius: 0%;
-    width: 100%;
-    height: 100px;
-    position: absolute;
-    overflow: hidden;
-    bottom: 10;
-}
 a{
     color: #7277d8;
 }
