@@ -22,15 +22,18 @@ function search() {
 
             // get data & put in an array
             for (var i = 0; i < 20; ++i) {
-                try {
-                    arrTitles.push(response.data[i].title);
-                    arrImages.push(response.data[i].images.jpg.image_url);
-                    arrYear.push(response.data[i].year);
-                } catch (error){
-                    arrTitles.push(response.data[0].title);
-                    arrImages.push(response.data[0].images.jpg.image_url);
-                    arrYear.push(response.data[0].year);                       
+                if (response.data[i].rating == "Rx - Hentai") {
+                    null;
+                } else {
+                    try {
+                        arrTitles.push(response.data[i].title);
+                        arrImages.push(response.data[i].images.jpg.image_url);
+                        arrYear.push(response.data[i].year);
+                    } catch (error){
+                        null;
+                    }
                 }
+
             }
 
             // put data on page
