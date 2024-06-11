@@ -1,19 +1,36 @@
 const url = "https://api.jikan.moe/v4/anime?q=";
-// &page=
 
-var current_page = 1;
+let current_page = 1;
+let old_text;
+let page_total;
+
+document.getElementById("page_container").style.visibility = "hidden";
+document.getElementById("page_container2").style.visibility = "hidden";
 
 function search() {
     let container = document.getElementById("container");
-    let page_container = document.getElementById("page_container");
+  
 
     // delete old data
     document.getElementById("container").innerHTML = "";
 
     // use the search box
     var text = document.getElementById("search").value;
+
+    try{
+        if (text !== old_text) {
+            current_page = 1;
+        }        
+    } catch (error){
+        document.getElementById("findmeanime").innerHTML = error;
+        null;
+    }
+
+    
     document.getElementById("result").innerHTML = "Search results for " + text;
     document.getElementById("page_counter").innerHTML = current_page;
+
+    old_text = text;
 
     // get json data from api!
     fetch(url + text + '&page=' + current_page)
@@ -24,6 +41,8 @@ function search() {
             let arrTitles = [];
             let arrImages = [];
             let arrYear = [];
+            page_total = response.pagination.last_visible_page;
+
 
             // get data & put in an array
             for (var i = 0; i < response.pagination.items.count; ++i) {
@@ -65,25 +84,31 @@ function search() {
           })
           .catch(error => {
             console.log('Error:', error);
-            document.getElementById("result").innerHTML = error;
           });
+
+    document.getElementById("page_container").style.visibility = "visible";
+    document.getElementById("page_container2").style.visibility = "visible";
 }
 
 function next() {
-    current_page += 1;
-    search()
+    if (current_page >= page_total) {
+        null;
+    } else {
+        current_page += 1;
+        search()        
+    }
+
 }
 
 function prev() {
-    current_page -= 1;
-    search()
+    if (current_page <= 1) {
+        null;
+    } else {
+        current_page -= 1;
+        search()
+    }
+
 }
-
-function dropdown() {
-    search("dropdown")
-}
-
-
 
 var searchbox = document.getElementById("search");
 
