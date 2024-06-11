@@ -3,9 +3,11 @@ const url = "https://api.jikan.moe/v4/anime?q=";
 
 function search() {
     let container = document.getElementById("container");
+    let pages = document.getElementById("page_container");
 
     // delete old data
     document.getElementById("container").innerHTML = "";
+    document.getElementById("page_container").innerHTML = "";
 
     // use the search box
     var text = document.getElementById("search").value;
@@ -20,6 +22,14 @@ function search() {
             let arrTitles = [];
             let arrImages = [];
             let arrYear = [];
+
+            // pagination
+            for (var i = 0; i < response.pagination.last_visible_page; i++) {
+                let button = document.createElement('button');
+                button.id = 'pages';
+                button.innerText = i+1;
+                page_container.appendChild(button);
+            }
 
             // get data & put in an array
             for (var i = 0; i < response.pagination.items.count; ++i) {

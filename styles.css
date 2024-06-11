@@ -87,3 +87,16 @@ a{
     border: none;
     color: rgb(124, 124, 238);
 }
+#pages{
+    border: white solid 2px;
+    background-color: #171945;
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 20px;
+    margin: 5px;
+}
+#pages:hover{
+    color: black;
+    background-color: white;
+}
