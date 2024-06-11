@@ -95,8 +95,12 @@ a{
     padding: 5px;
     font-size: 20px;
     margin: 5px;
+    transition: 0.5s;
 }
 #pages:hover{
     color: black;
     background-color: white;
+}
+#page_counter{
+    display: inline-block;
 }
