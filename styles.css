@@ -82,3 +82,8 @@ a{
     margin-bottom: 100px;
     position: relative;
 }
+#filters{
+    background: none;
+    border: none;
+    color: rgb(124, 124, 238);
+}

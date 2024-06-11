@@ -1,4 +1,5 @@
 const url = "https://api.jikan.moe/v4/anime?q=";
+// &page=
 
 function search() {
     let container = document.getElementById("container");
@@ -21,8 +22,8 @@ function search() {
             let arrYear = [];
 
             // get data & put in an array
-            for (var i = 0; i < 20; ++i) {
-                if (response.data[i].rating == "Rx - Hentai") {
+            for (var i = 0; i < response.pagination.items.count; ++i) {
+                if (response.data[i].rating == "Rx - Hentai" || response.data[i].rating == "R+ - Mild Nudity") {
                     null;
                 } else {
                     try {
@@ -63,6 +64,12 @@ function search() {
             document.getElementById("result").innerHTML = error;
           });
 }
+
+function dropdown() {
+    search("dropdown")
+}
+
+
 
 var searchbox = document.getElementById("search");
 
