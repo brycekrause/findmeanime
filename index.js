@@ -1,3 +1,11 @@
+/* TODO:
+        Add subpages for each anime when it is generated
+        This can be accomplished by storing the anime data for each show
+        once the function search() is ran.
+        Create a file to store the information page; use this page for each show.
+        Simply parse the data to the already developed structure and tada!
+*/
+
 const url = "https://api.jikan.moe/v4/anime?q=";
 
 let current_page = 1;
