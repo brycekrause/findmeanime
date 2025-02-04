@@ -69,7 +69,7 @@ function search() {
             }
 
             // put data on page
-            for (i = 0; i < arrTitles.length; ++i) {
+            for (let i = 0; i < arrTitles.length; ++i) {
 
                 let div = document.createElement('div');
                 div.id = i;
@@ -88,6 +88,11 @@ function search() {
                 let eps = document.createElement('p');
                 eps.innerText = arrYear[i];
                 dataContainer.appendChild(eps);
+
+                div.addEventListener("click", function() {
+                    let title = encodeURIComponent(arrTitles[i]);
+                    window.open(`selection.html?title=${title}`, target = "_self");
+                });
             }
           })
           .catch(error => {
@@ -96,6 +101,8 @@ function search() {
 
     document.getElementById("page_container").style.visibility = "visible";
     document.getElementById("page_container2").style.visibility = "visible";
+
+
 }
 
 function next() {
