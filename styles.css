@@ -100,14 +100,6 @@ a{
 #page_counter{
     display: inline-block;
 }
-#header{
-    height: 65px;
-    width: 100%;
-    border-radius: 0;
-    margin: 0;
-    padding: 0;
-    color: white;
-    font-size: 12px;
-    background-color: #2e3170;
-
+.page_container{
+    background-color: red;
 }
