@@ -128,29 +128,33 @@ const searchbox = document.getElementById("search");
 
 
 
-const page_containers = document.getElementsByClassName("page_container");
+const page_container = document.getElementById("page_container");
+const page_container2 = document.getElementById("page_container2");
+
 document.addEventListener("DOMContentLoaded", function() {
-    prev = document.createElement('button');
-    prev.innerText = "Prev";
-    prev.id = "pages";
-    prev.addEventListener("click", prev);
-    prev.style.visibility = "hidden";
+    var prevButton = document.createElement('button');
+    prevButton.innerText = "Prev";
+    prevButton.id = "pages";
+    prevButton.addEventListener("click", prev);
+    prevButton.style.visibility = "hidden";
 
     counter = document.createElement('p');
     counter.id = "page_counter";
     counter.style.visibility = "hidden";
 
-    next = document.createElement('button');
-    next.innerText = "Next";
-    next.id = "pages";
-    next.addEventListener("click", next);
-    next.style.visibility = "hidden";
+    var nextButton = document.createElement('button');
+    nextButton.innerText = "Next";
+    nextButton.id = "pages";
+    nextButton.addEventListener("click", next);
+    nextButton.style.visibility = "hidden";
 
-    for (page_container of page_containers) {
-        page_container.appendChild(prev);
-        page_container.appendChild(counter);
-        page_container.appendChild(next);
-    }
+    page_container.appendChild(prevButton);
+    page_container.appendChild(counter);
+    page_container.appendChild(nextButton);
+
+    page_container2.appendChild(prevButton);
+    page_container2.appendChild(counter);
+    page_container2.appendChild(nextButton);
 
     searchbox.addEventListener("keypress", function(event) {
         if (event.key === "Enter") {

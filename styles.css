@@ -102,4 +102,5 @@ a{
 }
 .page_container{
     background-color: red;
+    height: auto;
 }
