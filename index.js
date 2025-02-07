@@ -96,9 +96,7 @@ function search() {
             console.log('Error:', error);
           });
 
-    prev.style.visibility = "visible";
-    counter.style.visibility = "visible";
-    next.style.visibility = "visible";
+    page_container.style.visibility = "visible";
 
 
 }
@@ -130,27 +128,29 @@ const searchButton = document.getElementById("searchButton");
 
 document.addEventListener("DOMContentLoaded", function() {
     var page_container = document.createElement('div');
+    page_container.id = "page_container";
+    page_container.style.visibility = "hidden";
 
     var prevButton = document.createElement('button');
     prevButton.innerText = "Prev";
     prevButton.id = "pages";
     prevButton.addEventListener("click", prev);
-    prevButton.style.visibility = "hidden";
 
     counter = document.createElement('p');
     counter.id = "page_counter";
-    counter.style.visibility = "hidden";
 
     var nextButton = document.createElement('button');
     nextButton.innerText = "Next";
     nextButton.id = "pages";
     nextButton.addEventListener("click", next);
-    nextButton.style.visibility = "hidden";
 
     page_container.appendChild(prevButton);
     page_container.appendChild(counter);
     page_container.appendChild(nextButton);
 
+
+
+    searchContainer.appendChild(page_container);
 
     searchbox.addEventListener("keypress", function(event) {
         if (event.key === "Enter") {

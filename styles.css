@@ -100,7 +100,7 @@ a{
 #page_counter{
     display: inline-block;
 }
-.page_container{
-    background-color: red;
+#page_container{
     height: auto;
+    font-family: "Roboto", sans-serif;
 }
