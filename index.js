@@ -128,8 +128,6 @@ const searchContainer = document.getElementById("searchContainer");
 const searchbox = document.getElementById("search");
 const searchButton = document.getElementById("searchButton");
 
-const page_container = document.getElementById("page_container");
-
 document.addEventListener("DOMContentLoaded", function() {
     var page_container = document.createElement('div');
 
@@ -153,7 +151,6 @@ document.addEventListener("DOMContentLoaded", function() {
     page_container.appendChild(counter);
     page_container.appendChild(nextButton);
 
-    document.appendChild(page_container);
 
     searchbox.addEventListener("keypress", function(event) {
         if (event.key === "Enter") {
