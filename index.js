@@ -123,15 +123,16 @@ function prev() {
 
 }
 
+
+const searchContainer = document.getElementById("searchContainer");
 const searchbox = document.getElementById("search");
-
-
-
+const searchButton = document.getElementById("searchButton");
 
 const page_container = document.getElementById("page_container");
-const page_container2 = document.getElementById("page_container2");
 
 document.addEventListener("DOMContentLoaded", function() {
+    var page_container = document.createElement('div');
+
     var prevButton = document.createElement('button');
     prevButton.innerText = "Prev";
     prevButton.id = "pages";
@@ -152,14 +153,16 @@ document.addEventListener("DOMContentLoaded", function() {
     page_container.appendChild(counter);
     page_container.appendChild(nextButton);
 
-    page_container2.appendChild(prevButton);
-    page_container2.appendChild(counter);
-    page_container2.appendChild(nextButton);
+    document.appendChild(page_container);
 
     searchbox.addEventListener("keypress", function(event) {
         if (event.key === "Enter") {
             event.preventDefault();
-            document.getElementById("click").click();
+            search();
         }
     });
+
+    searchButton.addEventListener("click", search);
+
+    
 });

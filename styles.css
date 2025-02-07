@@ -64,7 +64,7 @@ p{
     padding-left: 15px;
     font-size: 20px;
 }
-#click{
+#searchButton{
     background: url(search.png) no-repeat;
     margin-top: 0px;
     border: solid white 1px;
