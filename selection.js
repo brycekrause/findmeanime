@@ -1,4 +1,7 @@
-window.onload = function() {
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
     const container = document.getElementById("container");
     const urlParams = new URLSearchParams(window.location.search);
     const title = urlParams.get('title');
@@ -6,4 +9,4 @@ window.onload = function() {
     const titleElement = document.createElement('p');
     titleElement.innerText = title;
     container.appendChild(titleElement);
-}
+});
