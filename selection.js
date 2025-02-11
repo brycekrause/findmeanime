@@ -1,4 +1,4 @@
-
+const url = "https://api.jikan.moe/v4/anime/";
 
 
 document.addEventListener("DOMContentLoaded", function() {

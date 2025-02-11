@@ -46,6 +46,7 @@ function search() {
             let arrTitles = [];
             let arrImages = [];
             let arrYear = [];
+            let arrID = [];
             page_total = response.pagination.last_visible_page;
 
 
@@ -58,6 +59,7 @@ function search() {
                         arrTitles.push(response.data[i].title);
                         arrImages.push(response.data[i].images.jpg.image_url);
                         arrYear.push(response.data[i].year);
+                        arrID.push(response.data[i].mal_id);
                     } catch (error){
                         null;
                     }
@@ -87,8 +89,8 @@ function search() {
                 dataContainer.appendChild(eps);
 
                 div.addEventListener("click", function() {
-                    let title = encodeURIComponent(arrTitles[i]);
-                    window.open(`selection.html?title=${title}`, target = "_self");
+                    let id = encodeURIComponent(arrID[i]);
+                    window.open(`selection.html?id=${id}`, target = "_self");
                 });
             }
           })
