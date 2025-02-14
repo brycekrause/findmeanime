@@ -72,6 +72,7 @@ function search() {
 
                 let div = document.createElement('div');
                 div.id = i;
+                div.className = "dataContainer";
                 container.appendChild(div);
 
                 let dataContainer = document.getElementById(i);

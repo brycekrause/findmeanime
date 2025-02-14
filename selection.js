@@ -32,18 +32,20 @@ document.addEventListener("DOMContentLoaded", function() {
                 let englishTitle = response.data.title_english;
                 let japaneseTitle = response.data.title_japanese;
                 let image = response.data.images.jpg.large_image_url;
-                let type = response.data.aired.prop.from.year; // why??
+                let type = response.data.type;
                 let episodes = response.data.episodes;
                 let rating = response.data.rating;
+                rating = rating.split(" - ")[0];
                 let synopsis = response.data.synopsis;
+                synopsis = synopsis.split("[")[0];
                 let score = response.data.score;
 
                 if (type === "Movie") {
-                    let aired = response.data.aired.prop.from.year;
+                    var aired = response.data.aired.prop.from.year;
                 } else if (type === "TV") {
-                    let aired = response.data.aired.prop.from.year + "-" + response.data.aired.prop.to.year;
+                    var aired = response.data.aired.prop.from.year + "-" + response.data.aired.prop.to.year;
                 } else {
-                    let aired = response.data.aired.string;
+                    var aired = response.data.aired.string;
                 }
 
 
