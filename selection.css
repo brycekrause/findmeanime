@@ -5,6 +5,7 @@ body{
     margin: 0;
 }
 #site{
+    margin-top: 80px;
     width: 100%;
     min-height: 100%;
     margin-bottom: 100px;
@@ -54,12 +55,12 @@ body{
     width: 70%;
     margin: 0 auto;
 }
-#headerDiv{
+#detailsDiv{
     display: flex;
     justify-content: space-between;
     margin: 20px 50px;
 }
-#headerDiv > *{
+#detailsDiv > *{
     margin: 0 20px;
     border: 1px solid;
     width: 20%;
@@ -69,6 +70,7 @@ body{
 #infoDiv{
     display: flex;
     align-items: flex-start;
+    margin: 0 30px;
 }
 #infoDiv > img{
     margin-right: 20px;
