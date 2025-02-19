@@ -1,0 +1,91 @@
+#header{
+    width: 100%;
+    height: 50px;
+    position: fixed;
+    background-color: #2a2f73;
+    color: white;
+    border-radius: 0px;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#header > a{
+    color: white;
+    text-decoration: none;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#header > *{
+    margin: 0 10px;
+}
+.searchWrapper{
+    display: flex;
+    flex-direction: row;
+    width: 200px;
+    height: 30px;
+    border: solid 1px white;
+    border-radius: 10px;
+}
+
+.HeaderButtons{
+    height: 100%;
+    display: flex;
+    border: none;
+}
+.AnimeDropdownDiv{
+    border-right: 1px solid white;
+}
+.AnimeDropdown, .MangaDropdown{
+    display: none;
+    position: absolute;
+    min-width: 120px;
+    background-color: #2a2f73;
+    border: none;
+}
+.AnimeDropdown a{
+    color: white;
+    text-decoration: none;
+}
+.AnimeDropdown a:hover{
+    opacity: 0.5;
+}
+.MangaDropdown a{
+    color: white;
+    text-decoration: none;
+}
+.MangaDropdown a:hover{
+    opacity: 0.5;
+}
+.AnimeButton, .MangaButton{
+    height: 100%;
+    width: 130px;
+    background-color: #2a2f73;
+    border: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+.AnimeButton:hover, .MangaButton:hover{
+    opacity: 0.5;
+}
+
+
+.MangaDropdownDiv:hover .MangaDropdown{
+    display: flex;
+    flex-direction: column;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    padding: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
+}
+.AnimeDropdownDiv:hover .AnimeDropdown{
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
