@@ -21,10 +21,10 @@ document.addEventListener('DOMContentLoaded', function() {
             return response.json()
         })
         .then(response => {
-            for (var i = 0; i < 5; ++i) {
+            for (var i = 0; i < 5; i++) {
                 popularAnimeArr.push(response.data[i]);
             }
-            for (var i = 0; i < popularAnimeArr.length; ++i) {
+            for (var i = 0; i < popularAnimeArr.length; i++) {
                 popularAnimeContainer.innerHTML += "<a href='anime.html?id=" + popularAnimeArr[i].mal_id + "'><img src='" + popularAnimeArr[i].images.jpg.image_url + "'></a>";
             }
         })
@@ -38,12 +38,12 @@ document.addEventListener('DOMContentLoaded', function() {
             return response.json()
         })
         .then(response => {
-            for (var i = 0; i < 5; ++i) {
+            for (var i = 0; i < 5; i++) {
                 recommendedAnimeArr.push(response.data[i].entry[0]);
                 console.log(recommendedAnimeArr[i].images.jpg.image_url);
             }
-            for (var i = 0; i < popularAnimeArr.length; ++i) {
-                recommendedAnimeContainer.innerHTML += "<a href='anime.html?id=" + recommendedAnimeArr[i].mal_id + "'><img src='" + recommendedAnimeArr[i].images.jpg.image_url + "'></a>";
+            for (var i = 0; i < recommendedAnimeArr.length; i++) {
+                recommendedAnimeContainer.innerHTML += "<img src='" + recommendedAnimeArr[i].images.jpg.image_url + "'>";
             }
         })
         .catch(error => {
