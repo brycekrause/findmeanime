@@ -35,8 +35,8 @@ img:not(#click){
     border-radius: 10px;
     size: 100%;
     object-fit: cover;
-    width: 225px;
-    height: 309px;
+    width: 120px;
+    height: 180px;
     transition: transform .5s;
 }
 img:hover{
