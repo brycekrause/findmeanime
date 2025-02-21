@@ -25,7 +25,6 @@ body{
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 50px;
-    border: 1px solid white;
 }
 #result{
     margin-top: 30px;
@@ -94,19 +93,33 @@ a{
     font-family: "Roboto", sans-serif;
 }
 
-#container > section:not(:first-child){
+#container > section{
     width: 70%;
     display: flex;
     flex-wrap: nowrap;
-    flex-direction: column;
-    border: 10px solid orange;    
+    flex-direction: column; 
 }
 #container > section > h1{
     color: white;
-    margin-bottom: 2px;
+    margin-bottom: 5px;
+    margin-left: 15px;
+    text-align: left;
 }
-.welcomeSection{
-    width: 100%;
-    height: 150px;
-    background-color: #000000;
+#container > section > div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.optionContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 15%;
+    margin-top: 10px;
+}
+.optionContainer img{
+    margin-bottom: 0px;
+}
+.optionContainer p{
+    margin-top: 3px;
 }
