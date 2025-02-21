@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 popularMangaArr.push(response.data[i]);
             }
             for (var i = 0; i < popularMangaArr.length; i++) {
-                popularMangaContainer.innerHTML += "<div class='optionContainer'><a href='selection.html?id=" + popularMangaArr[i].mal_id + "'><img src='" + popularMangaArr[i].images.jpg.image_url + "'></a><p>" + popularMangaArr[i].title + "</p></div>";
+                popularMangaContainer.innerHTML += "<div class='optionContainer'><a href='manga/selection.html?id=" + popularMangaArr[i].mal_id + "'><img src='" + popularMangaArr[i].images.jpg.image_url + "'></a><p>" + popularMangaArr[i].title + "</p></div>";
             }
             mangaSection.innerHTML += "<h1>Popular Manga</h1>";
             mangaSection.appendChild(popularMangaContainer);
@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log(recommendedMangaArr[i].images.jpg.image_url);
             }
             for (var i = 0; i < recommendedAnimeArr.length; i++) {
-                recommendedMangaContainer.innerHTML += "<div class='optionContainer'><a href='selection.html?id=" + recommendedMangaArr[i].mal_id + "'><img src='" + recommendedMangaArr[i].images.jpg.image_url + "'></a><p>" + recommendedMangaArr[i].title + "</p></div>";
+                recommendedMangaContainer.innerHTML += "<div class='optionContainer'><a href='manga/selection.html?id=" + recommendedMangaArr[i].mal_id + "'><img src='" + recommendedMangaArr[i].images.jpg.image_url + "'></a><p>" + recommendedMangaArr[i].title + "</p></div>";
             }
             mangaSection.innerHTML += "<h1>Recommended Manga</h1>";
             mangaSection.appendChild(recommendedMangaContainer);
