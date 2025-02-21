@@ -119,6 +119,7 @@ a{
 }
 .optionContainer img{
     margin-bottom: 0px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 .optionContainer p{
     margin-top: 3px;

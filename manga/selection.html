@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title> <!-- Get the anime title and put it here -->
+    <link rel="stylesheet" href="selection.css">
+    <link rel="stylesheet" href="../header.css">
+</head>
+
+<body>
+    <div id="site">
+        <div id="header">
+            <a id="title" href="index.html">FINDMEANIME</a>
+
+            
+            <div class="HeaderButtons">
+                <div class="AnimeDropdownDiv">
+                    <button class="AnimeButton">Anime</button>
+                    <div class="AnimeDropdown">
+                        <a href="anime/search.html">Search</a>
+                        <a href="anime/popular.html">Popular</a>
+                        <a href="anime/genres.html">Genres</a>
+                        <a href="anime/recommendations.html">Recommendations</a>
+                        <a href="anime/random.html">Random</a>
+                    </div>                    
+                </div>
+
+                <div class="MangaDropdownDiv">
+                    <button class="MangaButton">Manga</button>
+                    <div class="MangaDropdown">
+                        <a href="manga/search.html">Search</a>
+                        <a href="manga/popular.html">Popular</a>
+                        <a href="manga/genres.html">Genres</a>
+                        <a href="manga/recommendations.html">Recommendations</a>
+                        <a href="manga/random.html">Random</a>
+                    </div>
+                </div>
+
+                
+
+            </div>
+
+            <div>
+                <div class="searchWrapper">
+                    <button id="searchButton"><img src="../resources/search.png"></button>
+                    <input type="text" id="searchBar">
+                </div>
+            
+                <div class="AccountDiv">
+                    <button>Login</button>
+                    <button>Sign up</button>
+                </div>                
+            </div>
+
+        </div>
+
+        <div id="detailsDiv">
+            <div id="titleDiv"></div>
+            <div id="airedDiv">
+                <p>AIRED</p>
+            </div>
+            <div id="typeDiv">
+                <p>TYPE</p>
+            </div>
+            <div id="ratingDiv">
+                <p>RATING</p>
+            </div>
+            <div id="scoreDiv">
+                <p>SCORE</p>
+            </div>
+            
+        </div>
+        <div id="infoDiv"></div>
+    </div>
+
+    <script src="selection.js"></script>
+</body>
+</html>

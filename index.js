@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 popularAnimeArr.push(response.data[i]);
             }
             for (var i = 0; i < popularAnimeArr.length; i++) {
-                popularAnimeContainer.innerHTML += "<div class='optionContainer'><a href='selection.html?id=" + popularAnimeArr[i].mal_id + "'><img src='" + popularAnimeArr[i].images.jpg.image_url + "'></a><p>" + popularAnimeArr[i].title + "</p></div>";
+                popularAnimeContainer.innerHTML += "<div class='optionContainer'><a href='anime/selection.html?id=" + popularAnimeArr[i].mal_id + "'><img src='" + popularAnimeArr[i].images.jpg.image_url + "'></a><p>" + popularAnimeArr[i].title + "</p></div>";
             }
         })
         .catch(error => {
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 recommendedAnimeArr.push(response.data[i].entry[0]);
             }
             for (var i = 0; i < recommendedAnimeArr.length; i++) {
-                recommendedAnimeContainer.innerHTML += "<div class='optionContainer'><a href='selection.html?id=" + recommendedAnimeArr[i].mal_id + "'><img src='" + recommendedAnimeArr[i].images.jpg.image_url + "'></a><p>" + recommendedAnimeArr[i].title + "</p></div>";
+                recommendedAnimeContainer.innerHTML += "<div class='optionContainer'><a href='anime/selection.html?id=" + recommendedAnimeArr[i].mal_id + "'><img src='" + recommendedAnimeArr[i].images.jpg.image_url + "'></a><p>" + recommendedAnimeArr[i].title + "</p></div>";
             }
         })
         .catch(error => {
