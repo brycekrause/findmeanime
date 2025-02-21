@@ -128,14 +128,15 @@ a{
     background-color: #3e3e3e;
     border: none;
     color: white;
-    border-radius: 3px;
+    border-radius: 4px;
     padding: 5px;
     width: 25%;
     margin-left: 15px;
     text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 6px 20px rgba(0, 0, 0, 0.3);
+    font-weight: bold;
     transition: all 0.5s;
 }
 .moreButton:hover{
-    opacity: 0.8;
-    color: #545ff6;
+    background-color: #545ff6;
 }

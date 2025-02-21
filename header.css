@@ -63,11 +63,19 @@
     border-right: 1px solid white;
 }
 .AnimeDropdown, .MangaDropdown{
-    display: none;
+    opacity: 0;
     position: absolute;
     min-width: 120px;
     background-color: #2a2f73;
     border: none;
+    display: flex;
+    flex-direction: column;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    padding: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    height: 0;
+    transition: height 0.3s, transform 0.3s, opacity 0.3s;
 }
 .AnimeDropdown a{
     color: white;
@@ -94,24 +102,21 @@
 }
 .AnimeButton:hover, .MangaButton:hover{
     opacity: 0.5;
+
 }
 
 
 .MangaDropdownDiv:hover .MangaDropdown{
-    display: flex;
-    flex-direction: column;
-    border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 5px;
-    padding: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
+    height: 100px;
+    overflow: hidden;
+    transform: translateY(0);
+    opacity: 1;
 }
 .AnimeDropdownDiv:hover .AnimeDropdown{
-    display: flex;
-    flex-direction: column;
-    padding: 5px;
-    border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    height: 100px;
+    overflow: hidden;
+    transform: translateY(0);
+    opacity: 1;
 }
 
 .AccountDiv button{
