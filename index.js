@@ -27,7 +27,12 @@ recommendedMangaArr = [];
 // https://api.jikan.moe/v4/random/manga
 
 
-
+function secureFetch(url) {
+    return fetch(url)
+        .then(response => response.json())
+        .then(response => {
+            if ()
+        })
 
 document.addEventListener('DOMContentLoaded', function() {
     // popular anime
