@@ -26,20 +26,25 @@ recommendedMangaContainer.style.visibility = "hidden";
 recommendedMangaArr = [];
 // https://api.jikan.moe/v4/random/manga
 
+const max_retries = 10;
 
-function secureFetch(url) {
+function reFetch(url, retries = max_retries) {
     return fetch(url)
         .then(response => response.json())
         .then(response => {
-            if ()
+            if (response.data && response.data.length > 0){
+                return response;
+            }else if(retries > 0){
+                return reFetch(url, retries - 1);
+            }else{
+                throw new Error("No data found:" + url);
+            }
         })
+}
 
 document.addEventListener('DOMContentLoaded', function() {
     // popular anime
-    fetch("https://api.jikan.moe/v4/top/anime")
-        .then(response => {
-            return response.json()
-        })
+    reFetch("https://api.jikan.moe/v4/top/anime")
         .then(response => {
             for (var i = 0; i < 6; i++) {
                 popularAnimeArr.push(response.data[i]);
@@ -52,14 +57,11 @@ document.addEventListener('DOMContentLoaded', function() {
             animeSection.innerHTML += "<a class='moreButton' href='anime/popular.html'>See all popular anime</a>";
         })
         .catch(error => {
-            console.log(error);
+            console.log("Error: " + error);
         });
 
     // recommended anime
-    fetch("https://api.jikan.moe/v4/recommendations/anime")
-        .then(response => {
-            return response.json()
-        })
+    reFetch("https://api.jikan.moe/v4/recommendations/anime")
         .then(response => {
             for (var i = 0; i < 6; i++) {
                 recommendedAnimeArr.push(response.data[i].entry[0]);
@@ -72,14 +74,11 @@ document.addEventListener('DOMContentLoaded', function() {
             animeSection.innerHTML += "<a class='moreButton' href='anime/recommended.html'>See all recommended anime</a>";
         })
         .catch(error => {
-            console.log(error);
+            console.log("Error: " + error);
         });
 
     // popular manga
-    fetch("https://api.jikan.moe/v4/top/manga")
-        .then(response => {
-            return response.json()
-        })
+    reFetch("https://api.jikan.moe/v4/top/manga")
         .then(response => {
             for (var i = 0; i < 6; i++) {
                 popularMangaArr.push(response.data[i]);
@@ -92,14 +91,11 @@ document.addEventListener('DOMContentLoaded', function() {
             mangaSection.innerHTML += "<a class='moreButton' href='manga/popular.html'>See all popular manga</a>";
         })
         .catch(error => {
-            console.log(error);
+            console.log("Error: " + error);
         });
 
     // recommended manga
-    fetch("https://api.jikan.moe/v4/recommendations/manga")
-        .then(response => {
-            return response.json()
-        })
+    reFetch("https://api.jikan.moe/v4/recommendations/manga")
         .then(response => {
             for (var i = 0; i < 6; i++) {
                 recommendedMangaArr.push(response.data[i].entry[0]);
@@ -113,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function() {
             mangaSection.innerHTML += "<a class='moreButton' href='manga/recommended.html'>See all recommended manga</a>";
         })
         .catch(error => {
-            console.log(error);
+            console.log("Error: " + error);
         });
 
     popularAnimeContainer.style.visibility = "visible";
