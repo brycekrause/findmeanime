@@ -28,6 +28,7 @@ recommendedMangaArr = [];
 
 const dateDropdown = document.getElementById("dateDropdown");
 const genreDropdown = document.getElementById("genreDropdown");
+const typeDropdown = document.getElementById("typeDropdown");
 
 const max_retries = 10;
 
@@ -121,19 +122,40 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let currentDate = new Date().getFullYear();
     let oldestDate = 1900;
-    
+
     while (currentDate >= oldestDate) {
         dateDropdown.innerHTML += "<option value='" + currentDate + "'>" + currentDate + "</option>";
         currentDate--;
     }
 
-    reFetch("https://api.jikan.moe/v4/genres/anime")
-        .then(response => {
-            for (var i = 0; i < response.data.length; i++) {
-                genreDropdown.innerHTML += "<option value='" + response.data[i].mal_id + "'>" + response.data[i].name + "</option>";
-            }
-        })
-        .catch(error => {
-            console.log("Error: " + error);
-        });
+    typeDropdown.addEventListener("change", function() {
+        for (child of genreDropdown.children) {
+            genreDropdown.removeChild(child);
+        }
+        genreDropdown.innerHTML += "<option value='0'>Genre</option>";
+        genreDropdown.innerHTML += "<option value='1'>All</option>";
+        if (typeDropdown.value == 1){
+            genreDropdown.innerHTML = "<option value=''>Genre</option>";
+            reFetch("https://api.jikan.moe/v4/genres/anime")
+                .then(response => {
+                    for (var i = 0; i < response.data.length; i++) {
+                        genreDropdown.innerHTML += "<option value='" + response.data[i].mal_id + "'>" + response.data[i].name + "</option>";
+                    }
+                })
+                .catch(error => {
+                    console.log("Error: " + error);
+                });
+        } else if(typeDropdown.value == 2){
+            genreDropdown.innerHTML = "<option value=''>Genre</option>";
+            reFetch("https://api.jikan.moe/v4/genres/manga")
+                .then(response => {
+                    for (var i = 0; i < response.data.length; i++) {
+                        genreDropdown.innerHTML += "<option value='" + response.data[i].mal_id + "'>" + response.data[i].name + "</option>";
+                    }
+                })
+                .catch(error => {
+                    console.log("Error: " + error);
+                });
+        }
+    });
 });
