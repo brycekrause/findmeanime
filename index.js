@@ -29,6 +29,7 @@ recommendedMangaArr = [];
 const dateDropdown = document.getElementById("dateDropdown");
 const genreDropdown = document.getElementById("genreDropdown");
 const typeDropdown = document.getElementById("typeDropdown");
+const indexSearchBar = document.getElementById("indexSearchBar");
 
 const max_retries = 10;
 
@@ -120,6 +121,11 @@ document.addEventListener('DOMContentLoaded', function() {
     popularMangaContainer.style.visibility = "visible";
     recommendedMangaContainer.style.visibility = "visible";
 
+    typeDropdown.value = 0;
+    genreDropdown.value = 0;
+    dateDropdown.value = 0;
+    indexSearchBar.value = "";
+
     let currentDate = new Date().getFullYear();
     let oldestDate = 1900;
 
@@ -129,13 +135,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     typeDropdown.addEventListener("change", function() {
-        for (child of genreDropdown.children) {
-            genreDropdown.removeChild(child);
-        }
-        genreDropdown.innerHTML += "<option value='0'>Genre</option>";
-        genreDropdown.innerHTML += "<option value='1'>All</option>";
         if (typeDropdown.value == 1){
-            genreDropdown.innerHTML = "<option value=''>Genre</option>";
+            genreDropdown.innerHTML = "<option value='0'>Genre</option>";
+            genreDropdown.innerHTML += "<option value='1'>All</option>";
             reFetch("https://api.jikan.moe/v4/genres/anime")
                 .then(response => {
                     for (var i = 0; i < response.data.length; i++) {
@@ -146,7 +148,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     console.log("Error: " + error);
                 });
         } else if(typeDropdown.value == 2){
-            genreDropdown.innerHTML = "<option value=''>Genre</option>";
+            genreDropdown.innerHTML = "<option value='0'>Genre</option>";
+            genreDropdown.innerHTML += "<option value='1'>All</option>";
             reFetch("https://api.jikan.moe/v4/genres/manga")
                 .then(response => {
                     for (var i = 0; i < response.data.length; i++) {
