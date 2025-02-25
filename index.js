@@ -26,6 +26,9 @@ recommendedMangaContainer.style.visibility = "hidden";
 recommendedMangaArr = [];
 // https://api.jikan.moe/v4/random/manga
 
+const dateDropdown = document.getElementById("dateDropdown");
+const genreDropdown = document.getElementById("genreDropdown");
+
 const max_retries = 10;
 
 function reFetch(url, retries = max_retries) {
@@ -99,7 +102,6 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => {
             for (var i = 0; i < 6; i++) {
                 recommendedMangaArr.push(response.data[i].entry[0]);
-                console.log(recommendedMangaArr[i].images.jpg.image_url);
             }
             for (var i = 0; i < recommendedAnimeArr.length; i++) {
                 recommendedMangaContainer.innerHTML += "<div class='optionContainer'><a href='manga/selection.html?id=" + recommendedMangaArr[i].mal_id + "'><img src='" + recommendedMangaArr[i].images.jpg.image_url + "'></a><p>" + recommendedMangaArr[i].title + "</p></div>";
@@ -116,4 +118,22 @@ document.addEventListener('DOMContentLoaded', function() {
     recommendedAnimeContainer.style.visibility = "visible";
     popularMangaContainer.style.visibility = "visible";
     recommendedMangaContainer.style.visibility = "visible";
+
+    let currentDate = new Date().getFullYear();
+    let oldestDate = 1900;
+    
+    while (currentDate >= oldestDate) {
+        dateDropdown.innerHTML += "<option value='" + currentDate + "'>" + currentDate + "</option>";
+        currentDate--;
+    }
+
+    reFetch("https://api.jikan.moe/v4/genres/anime")
+        .then(response => {
+            for (var i = 0; i < response.data.length; i++) {
+                genreDropdown.innerHTML += "<option value='" + response.data[i].mal_id + "'>" + response.data[i].name + "</option>";
+            }
+        })
+        .catch(error => {
+            console.log("Error: " + error);
+        });
 });

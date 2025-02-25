@@ -40,12 +40,13 @@ body{
     width: 70%;
     margin: 0 auto;
 }
-#detailsDiv{
+#titleDiv{
     display: flex;
     justify-content: space-between;
     margin: 20px 50px;
+    border: solid 1px red;
 }
-#detailsDiv > *{
+#titleDiv > *{
     margin: 0 20px;
     border: 1px solid;
     width: 20%;
@@ -56,6 +57,7 @@ body{
     display: flex;
     align-items: flex-start;
     margin: 0 30px;
+    border: solid 1px blue;
 }
 #infoDiv > img{
     margin-right: 20px;

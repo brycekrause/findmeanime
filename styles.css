@@ -93,7 +93,7 @@ a{
     font-family: "Roboto", sans-serif;
 }
 
-#container > section{
+#container > section:not(:first-child){
     width: 70%;
     display: flex;
     flex-wrap: nowrap;
@@ -139,4 +139,24 @@ a{
 }
 .moreButton:hover{
     background-color: #545ff6;
+}
+#searchSection{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 50px;
+    width: 70%;
+    border: solid;
+}
+#searchSection *{
+    border: solid blue 1px;
+}
+#searchSection div{
+    width: 20%;
+    height: 60px;
+}
+#searchSection select{
+    width: 100px;
+    height: 60px;
+    display: flex;
 }

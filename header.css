@@ -75,6 +75,7 @@
     padding: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     height: 0;
+    pointer-events: none;
     transition: height 0.3s, transform 0.3s, opacity 0.3s;
 }
 .AnimeDropdown a{
@@ -111,12 +112,14 @@
     overflow: hidden;
     transform: translateY(0);
     opacity: 1;
+    pointer-events: all;
 }
 .AnimeDropdownDiv:hover .AnimeDropdown{
     height: 95px;
     overflow: hidden;
     transform: translateY(0);
     opacity: 1;
+    pointer-events: all;
 }
 
 .AccountDiv button{

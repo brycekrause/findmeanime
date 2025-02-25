@@ -40,12 +40,13 @@ body{
     width: 70%;
     margin: 0 auto;
 }
-#detailsDiv{
+#titleDiv{
     display: flex;
     justify-content: space-between;
     margin: 20px 50px;
+    border: solid 1px red;
 }
-#detailsDiv > *{
+#titleDiv > *{
     margin: 0 20px;
     border: 1px solid;
     width: 20%;
@@ -54,11 +55,36 @@ body{
 }
 #infoDiv{
     display: flex;
-    align-items: flex-start;
-    margin: 0 30px;
+    flex-wrap: wrap;
+    width: 80%;
+    margin: auto;
+    border: solid 1px blue;
+    
 }
-#infoDiv > img{
+#imageDiv{
+    flex: 1;
     margin-right: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
+}
+#detailsDiv{
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 30%;
+    border: none;
+}
+#synopsisDiv{
+    flex: 2;
+    margin-top: 20px;
+    border-radius: 10px;
+    border: none;
+}
+#detailsDiv:first-child{
+    display: flex;
+    flex-direction: row;
+    background-color: black;
+    border-radius: 10px;
+    margin-bottom: 20px;
 }

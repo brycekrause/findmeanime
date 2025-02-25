@@ -10,6 +10,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const typeDiv = document.getElementById("typeDiv");
     const scoreDiv = document.getElementById("scoreDiv");
     const infoDiv = document.getElementById("infoDiv");
+    const imageDiv = document.getElementById("imageDiv");
+    const synopsisDiv = document.getElementById("synopsisDiv");
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get('id');
         
@@ -68,6 +70,6 @@ document.addEventListener("DOMContentLoaded", function() {
     ratingDiv.appendChild(ratingElement);
     scoreDiv.appendChild(scoreElement);
    
-    infoDiv.appendChild(imageElement);
-    infoDiv.appendChild(synopsisElement);
+    imageDiv.appendChild(imageElement);
+    synopsisDiv.appendChild(synopsisElement);
 });
