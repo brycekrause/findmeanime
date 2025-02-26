@@ -4,12 +4,10 @@ const container = document.getElementById("container");
 
 const popularAnimeContainer = document.createElement("div"); // https://api.jikan.moe/v4/top/anime
 popularAnimeContainer.id = "popularAnimeDiv";
-popularAnimeContainer.style.visibility = "hidden";
 popularAnimeArr = [];
 
 const recommendedAnimeContainer = document.createElement("div"); // https://api.jikan.moe/v4/recommendations/anime 
 recommendedAnimeContainer.id = "recommendedAnimeDiv";
-recommendedAnimeContainer.style.visibility = "hidden";
 recommendedAnimeArr = [];
 // https://api.jikan.moe/v4/random/anime
 
@@ -17,12 +15,10 @@ recommendedAnimeArr = [];
 
 const popularMangaContainer = document.createElement("div"); // https://api.jikan.moe/v4/top/manga
 popularMangaContainer.id = "popularMangaDiv";
-popularMangaContainer.style.visibility = "hidden";
 popularMangaArr = [];
 
 const recommendedMangaContainer = document.createElement("div"); // https://api.jikan.moe/v4/recommendations/manga
 recommendedMangaContainer.id = "recommendedMangaDiv";
-recommendedMangaContainer.style.visibility = "hidden";
 recommendedMangaArr = [];
 // https://api.jikan.moe/v4/random/manga
 
@@ -105,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
             for (var i = 0; i < 6; i++) {
                 recommendedMangaArr.push(response.data[i].entry[0]);
             }
-            for (var i = 0; i < recommendedAnimeArr.length; i++) {
+            for (var i = 0; i < recommendedMangaArr.length; i++) {
                 recommendedMangaContainer.innerHTML += "<div class='optionContainer'><a href='manga/selection.html?id=" + recommendedMangaArr[i].mal_id + "'><img src='" + recommendedMangaArr[i].images.jpg.image_url + "'></a><p>" + recommendedMangaArr[i].title + "</p></div>";
             }
             mangaSection.innerHTML += "<h1>Recommended Manga</h1>";
@@ -115,11 +111,6 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch(error => {
             console.log("Error: " + error);
         });
-
-    popularAnimeContainer.style.visibility = "visible";
-    recommendedAnimeContainer.style.visibility = "visible";
-    popularMangaContainer.style.visibility = "visible";
-    recommendedMangaContainer.style.visibility = "visible";
 
     typeDropdown.value = 0;
     genreDropdown.value = 0;
