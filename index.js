@@ -161,7 +161,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     indexSearch.addEventListener("click", function() {
-        window.location.href="anime/search.html";
+        if (typeDropdown.value = 1) {
+            window.location.href="anime/search.html?genre=" + genreDropdown.value + "&date=" + dateDropdown.value + "&search=" + indexSearchBar.value;
+        } else if (typeDropdown.value = 2) {
+            window.location.href="manga/search.html?genre=" + genreDropdown.value + "&date=" + dateDropdown.value + "&search=" + indexSearchBar.value;
+        }
     });
 
 });
