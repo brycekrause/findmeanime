@@ -26,6 +26,7 @@ const dateDropdown = document.getElementById("dateDropdown");
 const genreDropdown = document.getElementById("genreDropdown");
 const typeDropdown = document.getElementById("typeDropdown");
 const indexSearchBar = document.getElementById("indexSearchBar");
+const indexSearch = document.getElementById("indexSearch");
 
 const max_retries = 10;
 
@@ -152,4 +153,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
         }
     });
+
+    indexSearchBar.addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+            indexSearch.click();
+        }
+    });
+
+    indexSearch.addEventListener("click", function() {
+        window.location.href="anime/search.html";
+    });
+
 });
