@@ -161,7 +161,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     indexSearch.addEventListener("click", function() {
-        if (typeDropdown.value = 1) {
+        if (typeDropdown.value == 0) {
+            alert("Please select a type");
+        } else if (typeDropdown.value = 1) {
             window.location.href="anime/search.html?genre=" + genreDropdown.value + "&date=" + dateDropdown.value + "&search=" + indexSearchBar.value;
         } else if (typeDropdown.value = 2) {
             window.location.href="manga/search.html?genre=" + genreDropdown.value + "&date=" + dateDropdown.value + "&search=" + indexSearchBar.value;

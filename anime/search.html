@@ -6,8 +6,28 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="searchContainer">
-        <p id="result"></p>
+    <div id="container">
+        <section id="searchSection">
+            <div>
+                <button id="indexSearch"><img src="resources/search.png"></button>
+                <input type="text" id="indexSearchBar">                    
+            </div>
+
+            <select id="typeDropdown">
+                <option value="0">Type</option>
+                <option value="1">Anime</option>
+                <option value="2">Manga</option>
+            </select>
+            <select id="dateDropdown">
+                <option value="0">Year</option>
+                <option value="1">All</option>
+            </select>
+            <select id="genreDropdown">
+                <option value="0">Genre</option>
+                <option value="1">All</option>
+            </select>
+
+        </section>
     </div>
 </body>
 </html>
