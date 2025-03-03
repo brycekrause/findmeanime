@@ -67,6 +67,10 @@ body{
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
 }
+#imageDiv > img{
+    width: 100%;
+    border-radius: 10px;
+}
 #detailsDiv{
     flex: 2;
     display: flex;
