@@ -15,7 +15,6 @@ body{
     flex-direction: row;
     width: 200px;
     height: 30px;
-    border: solid 1px white;
     border-radius: 10px;
 }
 #search{
@@ -42,24 +41,26 @@ body{
 }
 #titleDiv{
     display: flex;
-    justify-content: space-between;
-    margin: 20px 50px;
-    border: solid 1px red;
+    justify-content: left;
+    flex-direction: column;
+    margin: 10px auto;
+    width: 80%;
+
 }
 #titleDiv > *{
-    margin: 0 20px;
-    border: 1px solid;
+    margin: 5px 20px;
     width: 20%;
     display: flex;
-    justify-content: center;
+    justify-content: left;
+}
+#titleDiv > :not(:first-child){
+    color: rgb(150, 150, 150);
 }
 #infoDiv{
     display: flex;
     flex-wrap: wrap;
     width: 80%;
     margin: auto;
-    border: solid 1px blue;
-    
 }
 #imageDiv{
     flex: 1;
@@ -85,10 +86,11 @@ body{
     border-radius: 10px;
     border: none;
 }
-#detailsDiv:first-child{
+#detailsDiv > div:first-child{
     display: flex;
     flex-direction: row;
-    background-color: black;
+    justify-content: space-evenly;
+    background-color: rgb(150, 81, 81);
     border-radius: 10px;
     margin-bottom: 20px;
 }
