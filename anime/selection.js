@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 englishTitleElement.innerText = englishTitle;
                 japaneseTitleElement.innerText = japaneseTitle;
-                typeElement.innerText = `(${type} ${episodes} Eps)`;
+                typeElement.innerText = `(${type}, ${episodes} Eps)`;
                 airedElement.innerText = aired;
                 ratingElement.innerText = rating;
                 synopsisElement.innerText = synopsis;

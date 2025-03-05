@@ -90,7 +90,20 @@ body{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    background-color: rgb(150, 81, 81);
     border-radius: 10px;
     margin-bottom: 20px;
+}
+
+
+#detailsDiv > div:first-child > div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    border-radius: 10px;
+    padding: 10px;
+}
+#detailsDiv > div:first-child > div *{
+    margin: 2px;
 }
