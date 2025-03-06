@@ -2,8 +2,6 @@ const url = "https://api.jikan.moe/v4/manga/";
 
 
 document.addEventListener("DOMContentLoaded", function() {
-    const container = document.getElementById("container");
-    const headerDiv = document.getElementById("headerDiv");
     const titleDiv = document.getElementById("titleDiv");
     const scoreDiv = document.getElementById("scoreDiv");
     const infoDiv = document.getElementById("infoDiv");
@@ -29,7 +27,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 let englishTitle = response.data.titles[0].title;
                 let japaneseTitle = response.data.titles[1].title;
                 let image = response.data.images.jpg.large_image_url;
-                let episodes = response.data.episodes;
                 let synopsis = response.data.synopsis;
                 synopsis = synopsis.split("[")[0];
                 let score = response.data.score;

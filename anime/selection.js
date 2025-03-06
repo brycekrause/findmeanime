@@ -2,8 +2,6 @@ const url = "https://api.jikan.moe/v4/anime/";
 
 
 document.addEventListener("DOMContentLoaded", function() {
-    const container = document.getElementById("container");
-    const headerDiv = document.getElementById("headerDiv");
     const titleDiv = document.getElementById("titleDiv");
     const airedDiv = document.getElementById("airedDiv");
     const ratingDiv = document.getElementById("ratingDiv");
