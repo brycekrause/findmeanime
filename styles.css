@@ -99,6 +99,7 @@ a{
     flex-wrap: nowrap;
     flex-direction: column; 
 }
+
 #container > section > h1{
     color: white;
     margin-bottom: 5px;
@@ -123,6 +124,12 @@ a{
 }
 .optionContainer p{
     margin-top: 3px;
+    width: 100%;
+}
+.optionContainer a{
+    max-height: 190px;
+    height: auto;
+    width: auto;
 }
 .moreButton{
     background-color: #3e3e3e;
