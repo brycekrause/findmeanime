@@ -6,18 +6,6 @@ body{
     height: 100%;
     margin: 0;
 }
-.dataContainer{
-    width: 300px;
-    height: 400px;
-    display: inline-block;
-    border-radius: 10px;
-    margin: 0 auto;
-}
-#searchContainer{
-    width: 100%;
-    height: 200px;
-    padding-bottom: 100px;
-}
 #container{
     min-width: 1520px;
     height: auto;
@@ -30,7 +18,7 @@ body{
     margin-top: 30px;
     color: white;
 }
-img:not(#click){
+section:not(:first-child) img:not(#click){
     border-radius: 10px;
     size: 100%;
     object-fit: cover;
@@ -38,30 +26,12 @@ img:not(#click){
     height: 180px;
     transition: transform .5s;
 }
-img:hover{
+section:not(:first-child) img:hover{
     transform: scale(1.1);
 
 }
 p{
     color: white;
-}
-#search{
-    height: auto;
-    background: none;
-    color: white;
-    flex-grow: 2;
-    border: none;
-}
-#search:focus{
-    outline: none;
-}
-#searchButton{
-    height: auto;
-    background: none;
-    border: none;
-    width: 30px;
-    color: white;  
-    cursor: pointer;
 }
 a{
     color: #7277d8;
@@ -70,27 +40,6 @@ a{
     width: 100%;
     min-height: 100%;
     margin-bottom: 100px;
-}
-#pages{
-    border: white solid 2px;
-    background-color: #171945;
-    color: white;
-    border-radius: 5px;
-    padding: 5px;
-    font-size: 20px;
-    margin: 5px;
-    transition: 0.5s;
-}
-#pages:hover{
-    color: black;
-    background-color: white;
-}
-#page_counter{
-    display: inline-block;
-}
-#page_container{
-    height: auto;
-    font-family: "Roboto", sans-serif;
 }
 
 #container > section:not(:first-child){
@@ -106,7 +55,7 @@ a{
     margin-left: 15px;
     text-align: left;
 }
-#container > section > div{
+#container > section:not(:first-child) > div{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;

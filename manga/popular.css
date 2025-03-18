@@ -1,0 +1,66 @@
+body{
+    background-color: #171945;
+    text-align: center;
+    vertical-align: middle;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    height: 100%;
+    margin: 0;
+}
+
+#container{
+    min-width: 1520px;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+#searchSection{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    width: 70%;
+}
+#searchSection div{
+    display: flex;
+    flex-direction: row;
+    width: 200px;
+    height: 25px;
+    border: solid 1px white;
+    border-radius: 5px;
+    padding: 3px;
+    margin: 0 10px;
+    background-color: white;
+}
+#indexSearchBar{
+    background-color: white;
+    color: black;
+    border: none;
+    outline: none;
+}
+#indexSearch{
+    background-color: white;
+    border: none;
+    color: black;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#indexSearch img{
+    width: 16px;
+    height: 16px;
+    filter: invert(100%);
+}
+#searchSection select{
+    width: 100px;
+    height: 35px;
+    display: flex;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    margin: 0 10px;
+}

@@ -41,13 +41,13 @@ document.addEventListener("DOMContentLoaded", function() {
                 let type = response.data.type;
                 let status = response.data.status;
 
-                if (! response.data.chapters === null) {
+                if (response.data.chapters != null) {
                     var chapters = response.data.chapters;
                 } else {
                     var chapters = "N/A";
                 }
                 
-                if (! response.data.published.prop.to.year === null) {
+                if (response.data.published.prop.to.year != null) {
                     var published = response.data.published.prop.from.year + "-" + response.data.published.prop.to.year;
                 } else {
                     var published = response.data.published.prop.from.year;

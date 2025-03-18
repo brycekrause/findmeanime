@@ -3,11 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="popular.css">
-    <link rel="stylesheet" href="../header.css">
+    <title>FindMeAnime</title>
+    <link href="../header.css" rel="stylesheet">
+    <link href="popular.css" rel="stylesheet">
 </head>
 <body>
-    
+    <div id="site">
+        <div id="header">
+            <a id="title" href="../index.html">FINDMEANIME</a>
+
+            
+            <div class="HeaderButtons">
+                <div class="AnimeDropdownDiv">
+                    <button class="AnimeButton">Anime</button>
+                    <div class="AnimeDropdown">
+                        <a href="anime/search.html">Search</a>
+                        <a href="anime/popular.html">Popular</a>
+                        <a href="anime/genres.html">Genres</a>
+                        <a href="anime/recommended.html">Recommended</a>
+                        <a href="anime/random.html">Random</a>
+                    </div>                    
+                </div>
+
+                <div class="MangaDropdownDiv">
+                    <button class="MangaButton">Manga</button>
+                    <div class="MangaDropdown">
+                        <a href="manga/search.html">Search</a>
+                        <a href="manga/popular.html">Popular</a>
+                        <a href="manga/genres.html">Genres</a>
+                        <a href="manga/recommended.html">Recommended</a>
+                        <a href="manga/random.html">Random</a>
+                    </div>
+                </div>
+
+                
+
+            </div>
+
+            <div>
+            
+                <div class="AccountDiv">
+                    <button>Login</button>
+                    <button>Sign up</button>
+                </div>                
+            </div>
+        
+        </div>
+
+        <div id="container">
+            <section id="searchSection">
+                <div>
+                    <button id="indexSearch"><img src="../resources/search.png"></button>
+                    <input type="text" id="indexSearchBar">                    
+                </div>
+
+                <select id="typeDropdown">
+                    <option value="0">Type</option>
+                    <option value="1">Anime</option>
+                    <option value="2">Manga</option>
+                </select>
+                <select id="dateDropdown">
+                    <option value="0">Year</option>
+                    <option value="1">All</option>
+                </select>
+                <select id="genreDropdown">
+                    <option value="0">Genre</option>
+                    <option value="1">All</option>
+                </select>
+
+            </section>
+
+
+        </div>
+    </div>
 </body>
 </html>
