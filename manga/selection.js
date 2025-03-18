@@ -4,6 +4,9 @@ const url = "https://api.jikan.moe/v4/manga/";
 document.addEventListener("DOMContentLoaded", function() {
     const titleDiv = document.getElementById("titleDiv");
     const scoreDiv = document.getElementById("scoreDiv");
+    const typeDiv = document.getElementById("typeDiv");
+    const statusDiv = document.getElementById("statusDiv");
+    const publishedDiv = document.getElementById("publishedDiv");
     const infoDiv = document.getElementById("infoDiv");
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get('id');
@@ -12,6 +15,9 @@ document.addEventListener("DOMContentLoaded", function() {
     const japaneseTitleElement = document.createElement('p');
     const synopsisElement = document.createElement('p');
     const scoreElement = document.createElement('p');
+    const typeElement = document.createElement('p');
+    const statusElement = document.createElement('p');
+    const publishedElement = document.createElement('p');
     const imageElement = document.createElement('img');
 
 
@@ -24,18 +30,27 @@ document.addEventListener("DOMContentLoaded", function() {
             console.error('Error:', error);
         })
             .then(response => {
-                let englishTitle = response.data.titles[0].title;
-                let japaneseTitle = response.data.titles[1].title;
+                let englishTitle = response.data.title;
+                let japaneseTitle = response.data.title_japanese;
                 let image = response.data.images.jpg.large_image_url;
                 let synopsis = response.data.synopsis;
                 synopsis = synopsis.split("[")[0];
                 let score = response.data.score;
+                let type = response.data.type;
+                let chapters = response.data.chapters;
+                let status = response.data.status;
+                let published = response.data.published.prop.from.year + "-" + response.data.published.prop.to.year;
 
 
                 englishTitleElement.innerText = englishTitle;
                 japaneseTitleElement.innerText = japaneseTitle;
                 synopsisElement.innerText = synopsis;
                 scoreElement.innerText = score;
+                statusElement.innerText = status;
+                typeElement.innerText = `(${type}, ${chapters} Chapters)`;
+                publishedElement.innerText = published;
+                
+
                 imageElement.src = image;
             }).catch(error => {
                 console.error('Error:', error);
@@ -46,6 +61,9 @@ document.addEventListener("DOMContentLoaded", function() {
     titleDiv.appendChild(englishTitleElement);
     titleDiv.appendChild(japaneseTitleElement);
     scoreDiv.appendChild(scoreElement);
+    typeDiv.appendChild(typeElement);
+    statusDiv.appendChild(statusElement);
+    publishedDiv.appendChild(publishedElement);
    
     infoDiv.appendChild(imageElement);
     infoDiv.appendChild(synopsisElement);
