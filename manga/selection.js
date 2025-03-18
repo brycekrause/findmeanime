@@ -7,6 +7,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const typeDiv = document.getElementById("typeDiv");
     const statusDiv = document.getElementById("statusDiv");
     const publishedDiv = document.getElementById("publishedDiv");
+    const synopsisDiv = document.getElementById("synopsisDiv");
+    const imageDiv = document.getElementById("imageDiv");
     const infoDiv = document.getElementById("infoDiv");
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get('id');
@@ -37,9 +39,19 @@ document.addEventListener("DOMContentLoaded", function() {
                 synopsis = synopsis.split("[")[0];
                 let score = response.data.score;
                 let type = response.data.type;
-                let chapters = response.data.chapters;
                 let status = response.data.status;
-                let published = response.data.published.prop.from.year + "-" + response.data.published.prop.to.year;
+
+                if (! response.data.chapters === null) {
+                    var chapters = response.data.chapters;
+                } else {
+                    var chapters = "N/A";
+                }
+                
+                if (! response.data.published.prop.to.year === null) {
+                    var published = response.data.published.prop.from.year + "-" + response.data.published.prop.to.year;
+                } else {
+                    var published = response.data.published.prop.from.year;
+                }
 
 
                 englishTitleElement.innerText = englishTitle;
@@ -65,6 +77,6 @@ document.addEventListener("DOMContentLoaded", function() {
     statusDiv.appendChild(statusElement);
     publishedDiv.appendChild(publishedElement);
    
-    infoDiv.appendChild(imageElement);
-    infoDiv.appendChild(synopsisElement);
+    imageDiv.appendChild(imageElement);
+    synopsisDiv.appendChild(synopsisElement);
 });
