@@ -60,3 +60,38 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
 });
+
+function paginationControls(){
+    if (topPaginationControls) { topPaginationControls.remove(); }
+    if (bottomPaginationControls) { bottomPaginationControls.remove(); }
+
+    topPaginationControls = document.createElement("div")
+    topPaginationControls.id = "topPaginationControls";
+    bottomPaginationControls = document.createElement("div");
+    bottomPaginationControls.id = "bottomPaginationControls";
+
+    const prevButton = document.createElement("button");
+    prevButton.innerHTML = "Previous";
+    prevButton.addEventListener("click", () => {
+        if (currentPage > 1){
+            currentPage--;
+            fetchPages();
+        }
+    });
+
+    const nextButton = document.createElement("button");
+    nextButton.innerHTML = "Next";
+    nextButton.addEventListener("click", () => {
+        if (currentPage < totalPages){
+            currentPage++;
+            fetchPages();
+        }
+    });
+
+    topPaginationControls.appendChild(prevButton);
+    topPaginationControls.appendChild(nextButton);
+
+    bottomPaginationControls.appendChild(prevButton.cloneNode(true));
+    bottomPaginationControls.appendChild(nextButton.cloneNode(true));
+
+}

@@ -6,7 +6,14 @@ body{
     height: 100%;
     margin: 0;
 }
-
+#site{
+    width: 100%;
+    min-height: 100%;
+    margin-bottom: 100px;
+}
+p{
+    color: white;
+}
 #container{
     min-width: 1520px;
     height: auto;
@@ -63,4 +70,49 @@ body{
     border: none;
     border-radius: 5px;
     margin: 0 10px;
+}
+section:not(:first-child) img:not(#click){
+    border-radius: 10px;
+    size: 100%;
+    object-fit: cover;
+    width: 120px;
+    height: 180px;
+    transition: transform .5s;
+}
+section:not(:first-child) img:hover{
+    transform: scale(1.1);
+
+}
+#container > section:not(:first-child){
+    width: 70%;
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row; 
+    justify-content: space-evenly;
+}
+#container > section:not(:first-child) > div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.optionContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 15%;
+    margin-top: 10px;
+}
+.optionContainer img{
+    margin-bottom: 0px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+.optionContainer p{
+    margin-top: 3px;
+    width: 100%;
+}
+.optionContainer a{
+    max-height: 190px;
+    height: auto;
+    width: auto;
 }
