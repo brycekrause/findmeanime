@@ -3,8 +3,7 @@ const url = "https://api.jikan.moe/v4/top/manga";
 
 const mangaSection = document.getElementById("mangaSection");
 var popularMangaArr = [];
-var page = 1;
-var isFetching = false;
+
 
 const max_retries = 10;
 
@@ -21,6 +20,8 @@ function reFetch(url, retries = max_retries) {
             }
         })
 }
+
+var page = 1;
 
 document.addEventListener("DOMContentLoaded", function() {
     function fetchPages(count = 54){
@@ -41,6 +42,11 @@ document.addEventListener("DOMContentLoaded", function() {
                         }
                     }
                 }
+
+                if (itemsAdded === 0){
+                    document.getElementById("loadMore").style.display = "none";
+                    return;
+                }
                 
                 if (itemsAdded < count){
                     page++;
@@ -56,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function() {
             });
     }
 
-    fetchPages()
+    fetchPages();
     
 
     document.getElementById("loadMore").addEventListener("click", function() {

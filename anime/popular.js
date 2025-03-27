@@ -20,78 +20,51 @@ function reFetch(url, retries = max_retries) {
         })
 }
 
+var page = 1;
+
 document.addEventListener("DOMContentLoaded", function() {
-    const fetchPromises = [];
-    var page = 1;
+    function fetchPages(count = 54){
 
-    function fetchPages(){
-
-        if (popularAnimeArr.length >= 54){
-            return Promise.resolve();
-        }
         
-        console.log(url + `?page=${page} : ${popularAnimeArr.length}`);
         return reFetch(url + `?page=${page}`)
             .then(response => {
+                let itemsAdded = 0;
+
                 for(let i = 0; i < response.data.length; i++){
                     if (!popularAnimeArr.some(item => item.mal_id === response.data[i].mal_id)) {
                         popularAnimeArr.push(response.data[i]);
-                    }
+                        animeSection.innerHTML += "<div class='optionContainer'><a href='selection.html?id=" + response.data[i].mal_id + "'><img src='" + response.data[i].images.jpg.image_url + "'></a><p>" + response.data[i].title + "</p></div>";
+                        itemsAdded++;
 
-                    if(popularAnimeArr.length >= 54){
-                        break;
+                        if (itemsAdded >= count){
+                            break;
+                        }
                     }
                 }
-                page++;
-                return fetchPages();
+
+                if (itemsAdded === 0){
+                    document.getElementById("loadMore").style.display = "none";
+                    return;
+                }
+                
+                if (itemsAdded < count){
+                    page++;
+                    console.log(url + `?page=${page} : ${popularAnimeArr.length}`);
+                    return fetchPages(count - itemsAdded);
+                } else {
+                    page++;
+                }
+
             })
             .catch(error => {
                 console.log(error);
             });
+    }
 
-            
-        }
+    fetchPages();
+    
 
-    fetchPages()
-    .then(() => {
-        for(var i = 0; i < popularAnimeArr.length; i++){
-            animeSection.innerHTML += "<div class='optionContainer'><a href='selection.html?id=" + popularAnimeArr[i].mal_id + "'><img src='" + popularAnimeArr[i].images.jpg.image_url + "'></a><p>" + popularAnimeArr[i].title + "</p></div>";
-        }
+    document.getElementById("loadMore").addEventListener("click", function() {
+        fetchPages();
     });
-
 });
-
-function paginationControls(){
-    if (topPaginationControls) { topPaginationControls.remove(); }
-    if (bottomPaginationControls) { bottomPaginationControls.remove(); }
-
-    topPaginationControls = document.createElement("div")
-    topPaginationControls.id = "topPaginationControls";
-    bottomPaginationControls = document.createElement("div");
-    bottomPaginationControls.id = "bottomPaginationControls";
-
-    const prevButton = document.createElement("button");
-    prevButton.innerHTML = "Previous";
-    prevButton.addEventListener("click", () => {
-        if (currentPage > 1){
-            currentPage--;
-            fetchPages();
-        }
-    });
-
-    const nextButton = document.createElement("button");
-    nextButton.innerHTML = "Next";
-    nextButton.addEventListener("click", () => {
-        if (currentPage < totalPages){
-            currentPage++;
-            fetchPages();
-        }
-    });
-
-    topPaginationControls.appendChild(prevButton);
-    topPaginationControls.appendChild(nextButton);
-
-    bottomPaginationControls.appendChild(prevButton.cloneNode(true));
-    bottomPaginationControls.appendChild(nextButton.cloneNode(true));
-
-}
