@@ -111,3 +111,10 @@ section:not(:first-child) img:hover{
     height: auto;
     width: auto;
 }
+#container > div{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 50px;
+    width: 100%;
+}
