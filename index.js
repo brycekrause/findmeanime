@@ -22,7 +22,7 @@ recommendedMangaContainer.id = "recommendedMangaDiv";
 recommendedMangaArr = [];
 // https://api.jikan.moe/v4/random/manga
 
-const dateDropdown = document.getElementById("dateDropdown");
+const ratingDropdown = document.getElementById("ratingDropdown");
 const genreDropdown = document.getElementById("genreDropdown");
 const typeDropdown = document.getElementById("typeDropdown");
 const indexSearchBar = document.getElementById("indexSearchBar");
@@ -115,16 +115,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     typeDropdown.value = 0;
     genreDropdown.value = 0;
-    dateDropdown.value = 0;
+    ratingDropdown.value = 0;
     indexSearchBar.value = "";
-
-    let currentDate = new Date().getFullYear();
-    let oldestDate = 1900;
-
-    while (currentDate >= oldestDate) {
-        dateDropdown.innerHTML += "<option value='" + currentDate + "'>" + currentDate + "</option>";
-        currentDate--;
-    }
 
     typeDropdown.addEventListener("change", function() {
         if (typeDropdown.value == 1){
@@ -163,36 +155,11 @@ document.addEventListener('DOMContentLoaded', function() {
     indexSearch.addEventListener("click", function() {
         if (typeDropdown.value == 0) {
             alert("Please select a type");
-        } else if (typeDropdown.value = 1) {
-            window.location.href="anime/search.html?genre=" + genreDropdown.value + "&date=" + dateDropdown.value + "&search=" + indexSearchBar.value;
-        } else if (typeDropdown.value = 2) {
-            window.location.href="manga/search.html?genre=" + genreDropdown.value + "&date=" + dateDropdown.value + "&search=" + indexSearchBar.value;
+        } else if (typeDropdown.value == 1) {
+            window.location.href="anime/search.html?genre=" + genreDropdown.value + "&rating=" + ratingDropdown.options[ratingDropdown.selectedIndex].text + "&search=" + indexSearchBar.value;
+        } else if (typeDropdown.value == 2) {
+            window.location.href="manga/search.html?genre=" + genreDropdown.options[genreDropdown.selectedIndex].text + "&rating=" + ratingDropdown.options[ratingDropdown.selectedIndex].text + "&search=" + indexSearchBar.value;
         }
     });
 
-});
-
-
-document.getElementById("randomAnimeButton").addEventListener("click", function(event) {
-    event.preventDefault();
-    fetch("https://api.jikan.moe/v4/random/anime")
-        .then(response => response.json())
-        .then(response => {
-            window.location.href="anime/selection.html?id=" + response.data.mal_id;
-        })
-        .catch(error => {
-            console.log("Error: " + error);
-        });
-});
-
-document.getElementById("randomMangaButton").addEventListener("click", function(event) {
-    event.preventDefault();
-    fetch("https://api.jikan.moe/v4/random/manga")
-        .then(response => response.json())
-        .then(response => {
-            window.location.href="manga/selection.html?id=" + response.data.mal_id;
-        })
-        .catch(error => {
-            console.log("Error: " + error);
-        });
 });
