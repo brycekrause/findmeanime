@@ -1,160 +1,81 @@
 const url = "https://api.jikan.moe/v4/anime?q=";
+const url_ext = "naruto&genres=1&rating=pg13";
 
-let current_page = 1;
-let old_text;
-let page_total;
+const animeSection = document.getElementById("animeSection");
+var searchedAnimeArr = [];
 
-function search() {
-    let container = document.getElementById("container");
-  
+const max_retries = 10;
 
-    // delete old data
-    document.getElementById("container").innerHTML = "";
-
-    // use the search box
-    var text = document.getElementById("search").value;
-
-    try{
-        if (text !== old_text) {
-            current_page = 1;
-        }        
-    } catch (error){
-        document.getElementById("findmeanime").innerHTML = error;
-        null;
-    }
-
-    
-    document.getElementById("result").innerHTML = "Search results for " + text;
-    document.getElementById("page_counter").innerHTML = current_page;
-
-    old_text = text;
-
-    // get json data from api!
-    fetch(url + text + '&page=' + current_page)
+function reFetch(url, retries = max_retries) {
+    return fetch(url)
+        .then(response => response.json())
         .then(response => {
-            return response.json();
-          })
-          .then(response => {
-            let arrTitles = [];
-            let arrImages = [];
-            let arrYear = [];
-            let arrID = [];
-            page_total = response.pagination.last_visible_page;
-
-
-            // get data & put in an array
-            for (var i = 0; i < response.pagination.items.count; ++i) {
-                if (response.data[i].rating == "Rx - Hentai" || response.data[i].rating == "R+ - Mild Nudity") {
-                    null;
-                } else {
-                    try {
-                        arrTitles.push(response.data[i].title);
-                        arrImages.push(response.data[i].images.jpg.image_url);
-                        arrYear.push(response.data[i].year);
-                        arrID.push(response.data[i].mal_id);
-                    } catch (error){
-                        null;
-                    }
-                }
-
+            if (response.data && response.data.length > 0){
+                return response;
+            }else if(retries > 0){
+                return reFetch(url, retries - 1);
+            }else{
+                throw new Error("No data found:" + url);
             }
-
-            // put data on page
-            for (let i = 0; i < arrTitles.length; ++i) {
-
-                let div = document.createElement('div');
-                div.id = i;
-                div.className = "dataContainer";
-                container.appendChild(div);
-
-                let dataContainer = document.getElementById(i);
-
-                let img = document.createElement('img');
-                img.src = arrImages[i]
-                dataContainer.appendChild(img);
-
-                let li = document.createElement('p');
-                li.innerText = arrTitles[i];
-                dataContainer.appendChild(li);
-
-                let eps = document.createElement('p');
-                eps.innerText = arrYear[i];
-                dataContainer.appendChild(eps);
-
-                div.addEventListener("click", function() {
-                    let id = encodeURIComponent(arrID[i]);
-                    window.open(`selection.html?id=${id}`, target = "_self");
-                });
-            }
-          })
-          .catch(error => {
-            console.log('Error:', error);
-          });
-
-    page_container.style.visibility = "visible";
-
-
+        })
 }
-
-function next() {
-    if (current_page >= page_total) {
-        null;
-    } else {
-        current_page += 1;
-        search()        
-    }
-
-}
-
-function prev() {
-    if (current_page <= 1) {
-        null;
-    } else {
-        current_page -= 1;
-        search()
-    }
-
-}
-
 
 const searchContainer = document.getElementById("searchContainer");
 const searchbox = document.getElementById("search");
 const searchButton = document.getElementById("searchButton");
 
 document.addEventListener("DOMContentLoaded", function() {
-    var page_container = document.createElement('div');
-    page_container.id = "page_container";
-    page_container.style.visibility = "hidden";
+    function fetchPages(count = 54){
 
-    var prevButton = document.createElement('button');
-    prevButton.innerText = "Prev";
-    prevButton.id = "pages";
-    prevButton.addEventListener("click", prev);
+        
+        return reFetch(url + `?page=${page}`)
+            .then(response => {
+                let itemsAdded = 0;
 
-    counter = document.createElement('p');
-    counter.id = "page_counter";
+                for(let i = 0; i < response.data.length; i++){
+                    if (!recommendedAnimeArr.some(item => item.mal_id === response.data[i].entry[0].mal_id)) {
+                        recommendedAnimeArr.push(response.data[i].entry[0]);
+                        animeSection.innerHTML += "<div class='optionContainer'><a href='selection.html?id=" + response.data[i].entry[0].mal_id + "'><img src='" + response.data[i].entry[0].images.jpg.image_url + "'></a><p>" + response.data[i].entry[0].title + "</p></div>";
+                        itemsAdded++;
+                        console.log(response.data[i].entry[0].mal_id);
+                    } 
 
-    var nextButton = document.createElement('button');
-    nextButton.innerText = "Next";
-    nextButton.id = "pages";
-    nextButton.addEventListener("click", next);
+                    if (!recommendedAnimeArr.some(item => item.mal_id === response.data[i].entry[1].mal_id)) {
+                        recommendedAnimeArr.push(response.data[i].entry[1]);
+                        animeSection.innerHTML += "<div class='optionContainer'><a href='selection.html?id=" + response.data[i].entry[1].mal_id + "'><img src='" + response.data[i].entry[1].images.jpg.image_url + "'></a><p>" + response.data[i].entry[1].title + "</p></div>";
+                        itemsAdded++;
+                        console.log(response.data[i].entry[1].mal_id);
+                    }
 
-    page_container.appendChild(prevButton);
-    page_container.appendChild(counter);
-    page_container.appendChild(nextButton);
+                    if (itemsAdded >= count){
+                        break;
+                    }
+                }
 
+                if (itemsAdded === 0){
+                    document.getElementById("loadMore").style.display = "none";
+                    return;
+                }
+                
+                if (itemsAdded < count){
+                    page++;
+                    console.log(url + `?page=${page} : ${recommendedAnimeArr.length}`);
+                    return fetchPages(count - itemsAdded);
+                } else {
+                    page++;
+                    console.log(page);
+                }
 
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
 
-    searchContainer.appendChild(page_container);
-
-    searchbox.addEventListener("keypress", function(event) {
-        if (event.key === "Enter") {
-            event.preventDefault();
-            search();
-        }
-    });
-
-    searchButton.addEventListener("click", search);
-
+    fetchPages();
     
+
+    document.getElementById("loadMore").addEventListener("click", function() {
+        fetchPages();
+    });
 });

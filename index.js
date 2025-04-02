@@ -119,7 +119,10 @@ document.addEventListener('DOMContentLoaded', function() {
     indexSearchBar.value = "";
 
     typeDropdown.addEventListener("change", function() {
-        if (typeDropdown.value == 1){
+        if (typeDropdown.value == 0) {
+            genreDropdown.innerHTML = "<option value='0'>Genre</option>";
+            genreDropdown.innerHTML += "<option value='1'>All</option>";
+        } else if (typeDropdown.value == 1){
             genreDropdown.innerHTML = "<option value='0'>Genre</option>";
             genreDropdown.innerHTML += "<option value='1'>All</option>";
             reFetch("https://api.jikan.moe/v4/genres/anime")
