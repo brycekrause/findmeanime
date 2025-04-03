@@ -20,31 +20,34 @@ function reFetch(url, retries = max_retries) {
         })
 }
 
-const searchContainer = document.getElementById("searchContainer");
-const searchbox = document.getElementById("search");
-const searchButton = document.getElementById("searchButton");
+var page = 1
+
+const params = new URLSearchParams(window.location.search);
+const genres = params.get('genre');
+const search = params.get('search').replace("-", "");
+//if genres == "All" || genres == "Genre"
+const rating = params.get('rating').replace("-", "");
 
 document.addEventListener("DOMContentLoaded", function() {
+    console.log(url + `${search}&page=${page}&genres=${genres}&rating=${rating}`);
     function fetchPages(count = 54){
-
-        
-        return reFetch(url + `?page=${page}`)
+        return reFetch(url + `${search}&page=${page}&genres=${genres}&rating=${rating}`)
             .then(response => {
                 let itemsAdded = 0;
 
                 for(let i = 0; i < response.data.length; i++){
-                    if (!recommendedAnimeArr.some(item => item.mal_id === response.data[i].entry[0].mal_id)) {
-                        recommendedAnimeArr.push(response.data[i].entry[0]);
-                        animeSection.innerHTML += "<div class='optionContainer'><a href='selection.html?id=" + response.data[i].entry[0].mal_id + "'><img src='" + response.data[i].entry[0].images.jpg.image_url + "'></a><p>" + response.data[i].entry[0].title + "</p></div>";
+                    if (!searchedAnimeArr.some(item => item.mal_id === response.data[i].mal_id)) {
+                        searchedAnimeArr.push(response.data[i]);
+                        animeSection.innerHTML += "<div class='optionContainer'><a href='selection.html?id=" + response.data[i].mal_id + "'><img src='" + response.data[i].images.jpg.image_url + "'></a><p>" + response.data[i].title + "</p></div>";
                         itemsAdded++;
-                        console.log(response.data[i].entry[0].mal_id);
+                        console.log(response.data[i].mal_id);
                     } 
 
-                    if (!recommendedAnimeArr.some(item => item.mal_id === response.data[i].entry[1].mal_id)) {
-                        recommendedAnimeArr.push(response.data[i].entry[1]);
-                        animeSection.innerHTML += "<div class='optionContainer'><a href='selection.html?id=" + response.data[i].entry[1].mal_id + "'><img src='" + response.data[i].entry[1].images.jpg.image_url + "'></a><p>" + response.data[i].entry[1].title + "</p></div>";
+                    if (!searchedAnimeArr.some(item => item.mal_id === response.data[i].mal_id)) {
+                        searchedAnimeArr.push(response.data[i]);
+                        animeSection.innerHTML += "<div class='optionContainer'><a href='selection.html?id=" + response.data[i].mal_id + "'><img src='" + response.data[i].images.jpg.image_url + "'></a><p>" + response.data[i].title + "</p></div>";
                         itemsAdded++;
-                        console.log(response.data[i].entry[1].mal_id);
+                        console.log(response.data[i].mal_id);
                     }
 
                     if (itemsAdded >= count){
@@ -59,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 
                 if (itemsAdded < count){
                     page++;
-                    console.log(url + `?page=${page} : ${recommendedAnimeArr.length}`);
+                    console.log(url + `?page=${page} : ${searchedAnimeArr.length}`);
                     return fetchPages(count - itemsAdded);
                 } else {
                     page++;
