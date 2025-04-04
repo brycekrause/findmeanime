@@ -21,7 +21,7 @@
                         <a href="popular.html">Popular</a>
                         <a href="genres.html">Genres</a>
                         <a href="recommended.html">Recommended</a>
-                        <a href="random.html">Random</a>
+                        <a href="#" id="randomAnimeButton">Random</a>
                     </div>                    
                 </div>
 
@@ -32,7 +32,7 @@
                         <a href="../manga/popular.html">Popular</a>
                         <a href="../manga/genres.html">Genres</a>
                         <a href="../manga/recommended.html">Recommended</a>
-                        <a href="../manga/random.html">Random</a>
+                        <a href="#" id="randomMangaButton">Random</a>
                     </div>
                 </div>
 
@@ -47,8 +47,9 @@
                     <button>Sign up</button>
                 </div>                
             </div>
-        
+
         </div>
+
 
         <div id="container">
             <section id="searchSection">
@@ -62,9 +63,15 @@
                     <option value="1">Anime</option>
                     <option value="2">Manga</option>
                 </select>
-                <select id="dateDropdown">
-                    <option value="0">Year</option>
+                <select id="ratingDropdown">
+                    <option value="0">Rating</option>
                     <option value="1">All</option>
+                    <option value="2">G</option>
+                    <option value="3">PG</option>
+                    <option value="4">PG-13</option>
+                    <option value="5">R 17+</option>
+                    <option value="6">R</option>
+                    <option value="7">Rx</option>
                 </select>
                 <select id="genreDropdown">
                     <option value="0">Genre</option>

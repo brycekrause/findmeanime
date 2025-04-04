@@ -15,6 +15,7 @@ function reFetch(url, retries = max_retries) {
             }else if(retries > 0){
                 return reFetch(url, retries - 1);
             }else{
+                document.getElementById("loadMore").style.display = "none";
                 throw new Error("No data found:" + url);
             }
         })
@@ -23,14 +24,19 @@ function reFetch(url, retries = max_retries) {
 var page = 1
 
 const params = new URLSearchParams(window.location.search);
-const genres = params.get('genre');
+var genres = params.get('genre');
+if (genres == 1 || genres == 0){
+    genres = "";
+}
 const search = params.get('search').replace("-", "");
-//if genres == "All" || genres == "Genre"
-const rating = params.get('rating').replace("-", "");
 
+var rating = params.get('rating').replace(/[-+ ]/g, "");
+if (rating == "All" || rating == "Rating"){
+    rating = "";
+}
 document.addEventListener("DOMContentLoaded", function() {
     console.log(url + `${search}&page=${page}&genres=${genres}&rating=${rating}`);
-    function fetchPages(count = 54){
+    function fetchPages(){
         return reFetch(url + `${search}&page=${page}&genres=${genres}&rating=${rating}`)
             .then(response => {
                 let itemsAdded = 0;
@@ -42,31 +48,13 @@ document.addEventListener("DOMContentLoaded", function() {
                         itemsAdded++;
                         console.log(response.data[i].mal_id);
                     } 
-
-                    if (!searchedAnimeArr.some(item => item.mal_id === response.data[i].mal_id)) {
-                        searchedAnimeArr.push(response.data[i]);
-                        animeSection.innerHTML += "<div class='optionContainer'><a href='selection.html?id=" + response.data[i].mal_id + "'><img src='" + response.data[i].images.jpg.image_url + "'></a><p>" + response.data[i].title + "</p></div>";
-                        itemsAdded++;
-                        console.log(response.data[i].mal_id);
-                    }
-
-                    if (itemsAdded >= count){
-                        break;
-                    }
                 }
 
-                if (itemsAdded === 0){
-                    document.getElementById("loadMore").style.display = "none";
-                    return;
-                }
                 
-                if (itemsAdded < count){
+                if (response.pagination.has_next_page == false){
+                    document.getElementById("loadMore").style.display = "none";
+                }else{
                     page++;
-                    console.log(url + `?page=${page} : ${searchedAnimeArr.length}`);
-                    return fetchPages(count - itemsAdded);
-                } else {
-                    page++;
-                    console.log(page);
                 }
 
             })
