@@ -79,6 +79,7 @@
     transition: height 0.3s, transform 0.3s, opacity 0.3s;
 }
 .AnimeDropdown a{
+    margin: auto;
     color: white;
     text-decoration: none;
 }
@@ -86,6 +87,7 @@
     opacity: 0.5;
 }
 .MangaDropdown a{
+    margin: auto;
     color: white;
     text-decoration: none;
 }
