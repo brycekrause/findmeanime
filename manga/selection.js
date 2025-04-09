@@ -36,7 +36,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 let japaneseTitle = response.data.title_japanese;
                 let image = response.data.images.jpg.large_image_url;
                 let synopsis = response.data.synopsis;
-                synopsis = synopsis.split("[")[0];
                 let score = response.data.score;
                 let type = response.data.type;
                 let status = response.data.status;

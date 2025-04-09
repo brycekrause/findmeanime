@@ -37,9 +37,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 let rating = response.data.rating;
                 rating = rating.split(" - ")[0];
                 let synopsis = response.data.synopsis;
-                if (synopsis != null){
-                    synopsis = synopsis.split("[")[0];   
-                }    
                                  
 
                 let score = response.data.score;
