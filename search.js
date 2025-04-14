@@ -1,5 +1,3 @@
-const ratingDropdown = document.getElementById("ratingDropdown");
-const genreDropdown = document.getElementById("genreDropdown");
 const typeDropdown = document.getElementById("typeDropdown");
 const indexSearchBar = document.getElementById("indexSearchBar");
 const indexSearch = document.getElementById("indexSearch");
@@ -20,40 +18,9 @@ function reFetch(url, retries = max_retries) {
 
 document.addEventListener('DOMContentLoaded', function() {
     typeDropdown.value = 0;
-    genreDropdown.value = 0;
-    ratingDropdown.value = 0;
     indexSearchBar.value = "";
 
-    typeDropdown.addEventListener("change", function() {
-        if (typeDropdown.value == 0) {
-            genreDropdown.innerHTML = "<option value='0'>Genre</option>";
-            genreDropdown.innerHTML += "<option value='1'>All</option>";
-        } else if (typeDropdown.value == 1){
-            genreDropdown.innerHTML = "<option value='0'>Genre</option>";
-            genreDropdown.innerHTML += "<option value='1'>All</option>";
-            reFetch("https://api.jikan.moe/v4/genres/anime")
-                .then(response => {
-                    for (var i = 0; i < response.data.length; i++) {
-                        genreDropdown.innerHTML += "<option value='" + response.data[i].mal_id + "'>" + response.data[i].name + "</option>";
-                    }
-                })
-                .catch(error => {
-                    console.log("Error: " + error);
-                });
-        } else if(typeDropdown.value == 2){
-            genreDropdown.innerHTML = "<option value='0'>Genre</option>";
-            genreDropdown.innerHTML += "<option value='1'>All</option>";
-            reFetch("https://api.jikan.moe/v4/genres/manga")
-                .then(response => {
-                    for (var i = 0; i < response.data.length; i++) {
-                        genreDropdown.innerHTML += "<option value='" + response.data[i].mal_id + "'>" + response.data[i].name + "</option>";
-                    }
-                })
-                .catch(error => {
-                    console.log("Error: " + error);
-                });
-        }
-    });
+
 
     indexSearchBar.addEventListener("keyup", function(event) {
         if (event.keyCode === 13) {
@@ -67,19 +34,19 @@ document.addEventListener('DOMContentLoaded', function() {
             alert("Please select a type");
         } else if (typeDropdown.value == 1) {
             if (currentPath.includes("/anime")){
-                window.location.href="search.html?genre=" + genreDropdown.value + "&rating=" + ratingDropdown.options[ratingDropdown.selectedIndex].text + "&search=" + indexSearchBar.value;
+                window.location.href="search.html?search=" + indexSearchBar.value;
             }else if(currentPath.includes("/manga")){
-                window.location.href="../anime/search.html?genre=" + genreDropdown.value + "&rating=" + ratingDropdown.options[ratingDropdown.selectedIndex].text + "&search=" + indexSearchBar.value;
+                window.location.href="../anime/search.html?search=" + indexSearchBar.value;
             }else{
-                window.location.href="anime/search.html?genre=" + genreDropdown.value + "&rating=" + ratingDropdown.options[ratingDropdown.selectedIndex].text + "&search=" + indexSearchBar.value;
+                window.location.href="anime/search.html?search=" + indexSearchBar.value;
             }
         } else if (typeDropdown.value == 2) {
             if (currentPath.includes("/manga")){
-                window.location.href="search.html?genre=" + genreDropdown.value + "&rating=" + ratingDropdown.options[ratingDropdown.selectedIndex].text + "&search=" + indexSearchBar.value;
+                window.location.href="search.html?search=" + indexSearchBar.value;
             }else if(currentPath.includes("/anime")){
-                window.location.href="../manga/search.html?genre=" + genreDropdown.value + "&rating=" + ratingDropdown.options[ratingDropdown.selectedIndex].text + "&search=" + indexSearchBar.value;
+                window.location.href="../manga/search.html?search=" + indexSearchBar.value;
             }else{
-                window.location.href="manga/search.html?genre=" + genreDropdown.options[genreDropdown.selectedIndex].text + "&rating=" + ratingDropdown.options[ratingDropdown.selectedIndex].text + "&search=" + indexSearchBar.value;
+                window.location.href="manga/search.html?search=" + indexSearchBar.value;
             }
         }
     });

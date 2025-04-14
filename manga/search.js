@@ -23,20 +23,11 @@ function reFetch(url, retries = max_retries) {
 var page = 1
 
 const params = new URLSearchParams(window.location.search);
-var genres = params.get('genre');
-if (genres == 1 || genres == 0){
-    genres = "";
-}
 const search = params.get('search').replace("-", "");
 
-var rating = params.get('rating').replace(/[-+ ]/g, "");
-if (rating == "All" || rating == "Rating"){
-    rating = "";
-}
 document.addEventListener("DOMContentLoaded", function() {
-    console.log(url + `${search}&page=${page}&genres=${genres}&rating=${rating}`);
     function fetchPages(){
-        return reFetch(url + `${search}&page=${page}&genres=${genres}&rating=${rating}`)
+        return reFetch(url + `${search}&page=${page}`)
             .then(response => {
                 let itemsAdded = 0;
 
