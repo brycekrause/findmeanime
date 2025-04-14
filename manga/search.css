@@ -133,6 +133,7 @@ section:not(:first-child) img:hover{
     height: 32px;
     padding: 5px;
     transition: all 0.3s;
+    display: none;
 }
 #loadMore:hover{
     background-color: white;

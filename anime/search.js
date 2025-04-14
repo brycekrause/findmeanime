@@ -25,6 +25,7 @@ var page = 1
 const params = new URLSearchParams(window.location.search);
 const search = params.get('search').replace("-", "");
 
+
 document.addEventListener("DOMContentLoaded", function() {
     function fetchPages(){
         return reFetch(url + `${search}&page=${page}`)
@@ -37,6 +38,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         animeSection.innerHTML += "<div class='optionContainer'><a href='selection.html?id=" + response.data[i].mal_id + "'><img src='" + response.data[i].images.jpg.image_url + "'></a><p>" + response.data[i].title + "</p></div>";
                         itemsAdded++;
                         console.log(response.data[i].mal_id);
+                        document.getElementById("loadMore").style.display = "block";
                     } 
                 }
 

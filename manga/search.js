@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         mangaSection.innerHTML += "<div class='optionContainer'><a href='selection.html?id=" + response.data[i].mal_id + "'><img src='" + response.data[i].images.jpg.image_url + "'></a><p>" + response.data[i].title + "</p></div>";
                         itemsAdded++;
                         console.log(response.data[i].mal_id);
+                        document.getElementById("loadMore").style.display = "block";
                     } 
                 }
 
