@@ -1,5 +1,4 @@
 const url = "https://api.jikan.moe/v4/anime?q=";
-
 const animeSection = document.getElementById("animeSection");
 var searchedAnimeArr = [];
 
@@ -27,6 +26,8 @@ const search = params.get('search').replace("-", "");
 
 
 document.addEventListener("DOMContentLoaded", function() {
+    typeDropdown.value = 0;
+    indexSearchBar.value = search;
     function fetchPages(){
         return reFetch(url + `${search}&page=${page}`)
             .then(response => {

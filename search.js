@@ -17,11 +17,6 @@ function reFetch(url, retries = max_retries) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    typeDropdown.value = 0;
-    indexSearchBar.value = "";
-
-
-
     indexSearchBar.addEventListener("keyup", function(event) {
         if (event.keyCode === 13) {
             indexSearch.click();
@@ -31,8 +26,6 @@ document.addEventListener('DOMContentLoaded', function() {
     indexSearch.addEventListener("click", function() {
         const currentPath = window.location.pathname;
         if (typeDropdown.value == 0) {
-            alert("Please select a type");
-        } else if (typeDropdown.value == 1) {
             if (currentPath.includes("/anime")){
                 window.location.href="search.html?search=" + indexSearchBar.value;
             }else if(currentPath.includes("/manga")){
@@ -40,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }else{
                 window.location.href="anime/search.html?search=" + indexSearchBar.value;
             }
-        } else if (typeDropdown.value == 2) {
+        } else if (typeDropdown.value == 1) {
             if (currentPath.includes("/manga")){
                 window.location.href="search.html?search=" + indexSearchBar.value;
             }else if(currentPath.includes("/anime")){
