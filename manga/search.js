@@ -1,6 +1,7 @@
 const url = "https://api.jikan.moe/v4/manga?q=";
 const mangaSection = document.getElementById("mangaSection");
 var searchedMangaArr = [];
+const searchTerm = document.getElementById("searchTerm");
 
 const max_retries = 10;
 
@@ -27,6 +28,7 @@ const search = params.get('search').replace("-", "");
 document.addEventListener("DOMContentLoaded", function() {
     typeDropdown.value = 1;
     indexSearchBar.value = search;
+    searchTerm.innerHTML = search;
     function fetchPages(){
         return reFetch(url + `${search}&page=${page}`)
             .then(response => {

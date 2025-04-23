@@ -14,6 +14,15 @@ body{
 p{
     color: white;
 }
+.header {
+    width: 65%;
+    display: flex;
+    justify-content: left;
+    color: white;
+    margin: 50px 0px 0px 0px;
+    height: 60px;
+    border-bottom: solid 2px white;
+}
 #container{
     min-width: 1520px;
     height: auto;
@@ -116,7 +125,7 @@ section:not(:first-child) img:hover{
     height: auto;
     width: auto;
 }
-#container > div{
+#loadMoreDiv{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
