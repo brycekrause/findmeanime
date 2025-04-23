@@ -15,11 +15,11 @@ p{
     color: white;
 }
 .header {
-    width: 70%;
+    width: 65%;
     display: flex;
     justify-content: left;
     color: white;
-    margin: 50px 0px 0px 50px;
+    margin: 50px 0px 0px 0px;
     height: 60px;
     border-bottom: solid 2px white;
 }
