@@ -110,14 +110,14 @@
 
 
 .MangaDropdownDiv:hover .MangaDropdown{
-    height: 95px;
+    height: 75px;
     overflow: hidden;
     transform: translateY(0);
     opacity: 1;
     pointer-events: all;
 }
 .AnimeDropdownDiv:hover .AnimeDropdown{
-    height: 95px;
+    height: 75px;
     overflow: hidden;
     transform: translateY(0);
     opacity: 1;
