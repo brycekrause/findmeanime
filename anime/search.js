@@ -36,11 +36,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 for(let i = 0; i < response.data.length; i++){
                     if (!searchedAnimeArr.some(item => item.mal_id === response.data[i].mal_id)) {
-                        searchedAnimeArr.push(response.data[i]);
-                        animeSection.innerHTML += "<div class='optionContainer'><a href='selection.html?id=" + response.data[i].mal_id + "'><img src='" + response.data[i].images.jpg.image_url + "'></a><p>" + response.data[i].title + "</p></div>";
-                        itemsAdded++;
-                        console.log(response.data[i].mal_id);
-                        document.getElementById("loadMore").style.display = "block";
+                        if (!response.data[i].rating.includes("Rx")){
+                            searchedAnimeArr.push(response.data[i]);
+                            animeSection.innerHTML += "<div class='optionContainer'><a href='selection.html?id=" + response.data[i].mal_id + "'><img src='" + response.data[i].images.jpg.image_url + "'></a><p>" + response.data[i].title + "</p></div>";
+                            itemsAdded++;
+                            document.getElementById("loadMore").style.display = "block";
+                        }
                     } 
                 }
 

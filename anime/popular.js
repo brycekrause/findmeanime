@@ -32,9 +32,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 for(let i = 0; i < response.data.length; i++){
                     if (!popularAnimeArr.some(item => item.mal_id === response.data[i].mal_id)) {
-                        popularAnimeArr.push(response.data[i]);
-                        animeSection.innerHTML += "<div class='optionContainer'><a href='selection.html?id=" + response.data[i].mal_id + "'><img src='" + response.data[i].images.jpg.image_url + "'></a><p>" + response.data[i].title + "</p></div>";
-                        itemsAdded++;
+                        if (!response.data[i].rating.includes("Rx")){
+                            popularAnimeArr.push(response.data[i]);
+                            animeSection.innerHTML += "<div class='optionContainer'><a href='selection.html?id=" + response.data[i].mal_id + "'><img src='" + response.data[i].images.jpg.image_url + "'></a><p>" + response.data[i].title + "</p></div>";
+                            itemsAdded++;
+                        }
+
 
                         if (itemsAdded >= count){
                             break;
