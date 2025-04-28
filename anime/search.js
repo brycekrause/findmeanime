@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     if (!searchedAnimeArr.some(item => item.mal_id === response.data[i].mal_id)) {
                         if (!response.data[i].rating.includes("Rx")){
                             searchedAnimeArr.push(response.data[i]);
-                            animeSection.innerHTML += "<div class='optionContainer'><a href='selection.html?id=" + response.data[i].mal_id + "'><img src='" + response.data[i].images.jpg.image_url + "'></a><p>" + response.data[i].title + "</p></div>";
+                            animeSection.innerHTML += "<div class='optionContainer'><a href='selection.html?id=" + response.data[i].mal_id + "'><img src='" + response.data[i].images.jpg.image_url + "'></a><p>" + response.data[i].title_english + "</p></div>";
                             itemsAdded++;
                             document.getElementById("loadMore").style.display = "block";
                         }
