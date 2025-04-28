@@ -32,20 +32,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 for(let i = 0; i < response.data.length; i++){
                     if (!recommendedAnimeArr.some(item => item.mal_id === response.data[i].entry[0].mal_id)) {
-                        if (!response.data[i].entry[0].rating.includes("Rx")){
                             recommendedAnimeArr.push(response.data[i].entry[0]);
                             animeSection.innerHTML += "<div class='optionContainer'><a href='selection.html?id=" + response.data[i].entry[0].mal_id + "'><img src='" + response.data[i].entry[0].images.jpg.image_url + "'></a><p>" + response.data[i].entry[0].title + "</p></div>";
                             itemsAdded++;
-                        }
                     } 
 
                     if (!recommendedAnimeArr.some(item => item.mal_id === response.data[i].entry[1].mal_id)) {
-                        if (!response.data[i].entry[1].rating.includes("Rx")){
                             recommendedAnimeArr.push(response.data[i].entry[1]);
                             animeSection.innerHTML += "<div class='optionContainer'><a href='selection.html?id=" + response.data[i].entry[1].mal_id + "'><img src='" + response.data[i].entry[1].images.jpg.image_url + "'></a><p>" + response.data[i].entry[1].title + "</p></div>";
                             itemsAdded++;
                             console.log(response.data[i].entry[1].mal_id);
-                        }
                     }
 
                     if (itemsAdded >= count){
