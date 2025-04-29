@@ -23,7 +23,7 @@ function reFetch(url, retries = max_retries) {
 var page = 1
 
 const params = new URLSearchParams(window.location.search);
-const search = params.get('search').replace("-", "");
+const search = params.get('search') ? params.get('search').replace("-", "") : "";
 
 document.addEventListener("DOMContentLoaded", function() {
     typeDropdown.value = 1;
